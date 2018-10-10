@@ -16,6 +16,7 @@ export class FilmDiary extends React.Component {
     this.props.dispatch(fetchDiaryFilms());
   }
 
+  // Function for generating all the cards
   generateFilmCards() {
     console.log(this.props.diaryFilms);
     return this.props.diaryFilms.map(film => {
@@ -33,9 +34,9 @@ export class FilmDiary extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  error: state.error,
-  diaryFilms: state.diaryFilms,
-  searchFilms: state.searchFilms
+  error: state.diary.error,
+  diaryFilms: state.diary.diaryFilms,
+  searchFilms: state.diary.searchFilms
 });
 
 export default connect(mapStateToProps)(FilmDiary);
