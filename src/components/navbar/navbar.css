@@ -1,0 +1,18 @@
+nav {
+  /* Colors */
+  background-color: black;
+  color: white;
+
+  /* Padding */
+  padding: 1.5rem;
+
+  /* Margin */
+
+  /* Text */
+  font-size: 36px;
+  text-align: center;
+}
+
+nav h1 {
+  margin: 0;
+}
