@@ -5,3 +5,17 @@
   /* Margin */
   margin: 0.5rem;
 }
+
+.row {
+  display: flex;
+}
+
+.image-column {
+  flex: 33.33%;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.column {
+  flex: 66.67%;
+}

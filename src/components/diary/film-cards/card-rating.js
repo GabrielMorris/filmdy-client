@@ -2,7 +2,8 @@
 import React from 'react';
 // Components
 // Styles
+import './card-rating.css';
 
 export default function CardRating(props) {
-  return <div>★★★★★</div>;
+  return <div className="card-rating">★★★★★</div>;
 }

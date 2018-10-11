@@ -9,26 +9,19 @@ import { Provider } from 'react-redux';
 import Store from './store/store';
 
 // Components
+import App from './components/app';
 import Navbar from './components/navbar/navbar';
-import FilmDiary from './components/diary/film-diary/film-diary';
-
-import CheeseList from './components/cheese-list';
-import CheeseStore from './store/cheeseStore';
 
 // Styles
 import './index.css';
-import cheeseStore from './store/cheeseStore';
 
 ReactDOM.render(
   <div>
     <Navbar />
     <Provider store={Store}>
-      <FilmDiary />
+      <App />
     </Provider>
   </div>,
-  // <Provider store={cheeseStore}>
-  //   <CheeseList />
-  // </Provider>,
   document.getElementById('root')
 );
 
