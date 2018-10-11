@@ -7,22 +7,8 @@ import {
 
 const initialState = {
   error: null,
-  diaryFilms: [
-    {
-      diaryID: '12345',
-      imdbID: 'tt3896198',
-      title: 'Guardians of the Galaxy Vol. 2',
-      plot:
-        'lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum ',
-      actors: ['Jessica Chastain', 'Joaquin Phoenix']
-    }
-  ],
-  searchFilms: [
-    {
-      imdbID: 'tt3896198',
-      title: 'Guardians of the Galaxy Vol. 2'
-    }
-  ]
+  diaryFilms: [],
+  searchFilms: []
 };
 
 export function diaryReducer(state = initialState, action) {

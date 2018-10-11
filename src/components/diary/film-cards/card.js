@@ -22,8 +22,8 @@ export default function Card(props) {
       <CardHeader title={props.film.title} />
       <div className="row">
         <div className="image-column">
-          {/* Poster TODO: make these not placeholders */}
-          <CardPoster />
+          {/* Poster */}
+          <CardPoster poster={props.film.poster} />
         </div>
 
         <div className="column">
@@ -36,8 +36,8 @@ export default function Card(props) {
           {/* Actors */}
           <CardActors actors={props.film.actors} />
 
-          {/* Critics TODO: make not placeholders */}
-          <CardCritics />
+          {/* Critics */}
+          <CardCritics criticalRatings={props.film.ratings} />
         </div>
       </div>
     </div>

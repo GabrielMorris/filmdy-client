@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.5.2",
+    "react-burger-menu": "^2.5.4",
     "react-css-grid": "^2.0.0-0",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",

@@ -6,11 +6,12 @@ import React from 'react';
 // Styles
 
 export default function CardCritics(props) {
-  return (
-    <ul>
-      <li>Rotten Tomatoes - 85%</li>
-      <li>Metacritic - 75/100</li>
-      <li>IMDb - 7.7/10</li>
-    </ul>
-  );
+  const mappedRatings = props.criticalRatings.map(rating => {
+    return (
+      <li>
+        {rating.Source} - {rating.Value}
+      </li>
+    );
+  });
+  return <ul>{mappedRatings}</ul>;
 }

@@ -7,7 +7,7 @@ import './card-poster.css';
 export default function CardPoster(props) {
   return (
     <div>
-      <img className="card-poster" src="https://via.placeholder.com/300x445" />
+      <img className="card-poster" src={props.poster} />
     </div>
   );
 }
