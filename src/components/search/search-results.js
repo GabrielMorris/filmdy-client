@@ -3,14 +3,17 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
+import SearchResultCard from './search-result-card/search-result-card';
+
 // Styles
+import './search-results.css';
 
 export class SearchResults extends React.Component {
   generateFilmResults() {
     return this.props.searchResults.map((film, index) => {
       return (
         <li key={index}>
-          {film.Title} - {film.Year} - {film.imdbID}
+          <SearchResultCard film={film} />
         </li>
       );
     });

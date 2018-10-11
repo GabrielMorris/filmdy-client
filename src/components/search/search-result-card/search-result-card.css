@@ -1,0 +1,40 @@
+.film-card {
+  /* Border */
+  border: 1px solid black;
+
+  /* Margin */
+  margin: 0.5rem;
+}
+
+.row {
+  display: flex;
+}
+
+.image-column {
+  flex: 10%;
+  padding: 5px;
+  vertical-align: middle;
+}
+
+.column {
+  flex: 90%;
+  padding-right: 1rem;
+}
+
+@media only screen and (max-width: 480px) {
+  .row {
+    display: block;
+  }
+
+  .image-column {
+    text-align: center;
+    /* flex: 10%; */
+    padding: 5px;
+    /* vertical-align: middle; */
+  }
+
+  .column {
+    /* flex: 90%; */
+    padding-right: 1rem;
+  }
+}
