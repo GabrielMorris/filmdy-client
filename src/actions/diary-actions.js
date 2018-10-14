@@ -1,10 +1,15 @@
 /* Fetching diary films */
 // Async
-export const fetchDiaryFilms = diaryFilms => dispatch => {
+export const fetchDiaryFilms = (token, userID) => dispatch => {
   dispatch(fetchDiaryFilmsRequest());
   console.log(1);
+  console.log('hhhhh', userID);
 
-  return fetch('http://localhost:8080/api/films')
+  return fetch(`http://localhost:8080/api/films?userID=${userID}`, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
     .then(response => {
       console.log(response);
       if (!response.ok) {

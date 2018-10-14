@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "jwt-decode": "^2.2.0",
     "react": "^16.5.2",
     "react-burger-menu": "^2.5.4",
     "react-css-grid": "^2.0.0-0",

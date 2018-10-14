@@ -26,6 +26,26 @@ export const fetchSearchFilms = searchTerm => dispatch => {
         return response.Search;
       })
       .then(filmsSearchArray => {
+        // const filmsArrayWithDescriptions = filmsSearchArray.map(film => {
+        //   const imdbID = film.imdbID;
+        //   const filmWithDescription = film;
+        //   const DETAILS_URI = `http://www.omdbapi.com/?i=${imdbID}&plot=full${API_KEY}`;
+
+        //   fetch(DETAILS_URI)
+        //     .then(response => {
+        //       return response.json();
+        //     })
+        //     .then(response => {
+        //       // console.log(response);
+        //       filmWithDescription.Plot = response.Plot;
+        //     });
+
+        //   console.log(filmWithDescription);
+
+        //   return filmWithDescription;
+        // });
+        // console.log(filmsArrayWithDescriptions);
+        // dispatch(searchFilmSuccess(filmsArrayWithDescriptions));
         dispatch(searchFilmSuccess(filmsSearchArray));
       })
       .catch(error => {

@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import { connect } from 'react-redux';
+import requireAuth from './authentication/require-auth';
 
 // React router
 import {
@@ -23,29 +24,15 @@ function App(props) {
 }
 
 function appComponentBuilder(props) {
-  if (!props.userSignedIn) {
-    // Return landing
-    return (
-      <Router>
-        <main>
-          {/* Landing route */}
-          <Route exact path="/" component={Landing} />
-
-          {/* Search route */}
-          <Route exact path="/search" component={SearchContainer} />
-
-          {/* Login/signup route */}
-          <Route exact path="/login" component={AuthContainer} />
-        </main>
-      </Router>
-    );
-  }
-  // Else return everything
   return (
     <Router>
       <main>
         {/* Diary route */}
-        <Route exact path="/" component={FilmDiary} />
+        <Route
+          exact
+          path="/"
+          component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
+        />
 
         {/* Search route */}
         <Route exact path="/search" component={SearchContainer} />
@@ -58,8 +45,7 @@ function appComponentBuilder(props) {
 }
 
 const mapStateToProps = state => ({
-  userSignedIn: state.diary.userSignedIn,
-  userID: state.diary.userID
+  userSignedIn: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(App);

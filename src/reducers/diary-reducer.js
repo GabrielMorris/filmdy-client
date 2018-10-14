@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   error: null,
-  userSignedIn: false,
+  userSignedIn: true,
   userID: '',
   diaryFilms: [],
   searchFilms: []

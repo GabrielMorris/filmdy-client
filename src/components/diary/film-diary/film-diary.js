@@ -13,7 +13,7 @@ import { fetchDiaryFilms } from '../../../actions/diary-actions';
 
 export class FilmDiary extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchDiaryFilms());
+    this.props.dispatch(fetchDiaryFilms(this.props.token, this.props.userID));
   }
 
   // Function for generating all the cards
@@ -36,7 +36,9 @@ export class FilmDiary extends React.Component {
 const mapStateToProps = state => ({
   error: state.diary.error,
   diaryFilms: state.diary.diaryFilms,
-  searchFilms: state.diary.searchFilms
+  searchFilms: state.diary.searchFilms,
+  userID: state.auth.currentUser.id,
+  token: state.auth.authToken
 });
 
 export default connect(mapStateToProps)(FilmDiary);
