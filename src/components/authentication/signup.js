@@ -15,8 +15,6 @@ export default class Signup extends React.Component {
   }
 
   handleInputChange(event) {
-    console.log('handle is being called');
-
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -24,8 +22,6 @@ export default class Signup extends React.Component {
     this.setState({
       [name]: value
     });
-
-    console.log(this.state);
   }
 
   render() {
@@ -36,15 +32,12 @@ export default class Signup extends React.Component {
           event.preventDefault();
           console.log('signup submitted');
 
-          console.log(this.state);
-
           const newUserObject = {
             username: this.state.signupUsername,
             password: this.state.signupPassword
           };
 
-          console.log(newUserObject);
-
+          // TODO: here we will eventually need to get the JWT and get that added to the store
           return fetch('http://localhost:8080/api/users', {
             method: 'POST',
             headers: {
