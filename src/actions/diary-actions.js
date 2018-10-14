@@ -4,9 +4,9 @@ export const fetchDiaryFilms = diaryFilms => dispatch => {
   dispatch(fetchDiaryFilmsRequest());
   console.log(1);
 
-  return fetch('http://localhost:8080/api/diary')
+  return fetch('http://localhost:8080/api/films')
     .then(response => {
-      console.log(2);
+      console.log(response);
       if (!response.ok) {
         console.log(3);
         return Promise.reject(response.statusText);
@@ -18,7 +18,8 @@ export const fetchDiaryFilms = diaryFilms => dispatch => {
     .then(films => {
       console.log(5);
       console.log(films);
-      return films.diaryFilms;
+      // TODO: this will probably need to be changed
+      return films[0].diaryFilms;
     })
     .then(diaryFilms => {
       console.log(6);

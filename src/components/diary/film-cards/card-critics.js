@@ -6,9 +6,9 @@ import React from 'react';
 // Styles
 
 export default function CardCritics(props) {
-  const mappedRatings = props.criticalRatings.map(rating => {
+  const mappedRatings = props.criticalRatings.map((rating, index) => {
     return (
-      <li>
+      <li key={index}>
         {rating.Source} - {rating.Value}
       </li>
     );

@@ -27,8 +27,8 @@ export default function Card(props) {
         </div>
 
         <div className="column">
-          {/* User rating TODO: make these not placeholders */}
-          <CardRating />
+          {/* User rating */}
+          <CardRating rating={props.film.userRating} />
 
           {/* Plot */}
           <CardDescription plot={props.film.plot} />

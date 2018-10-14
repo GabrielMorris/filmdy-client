@@ -5,5 +5,10 @@ import React from 'react';
 import './card-rating.css';
 
 export default function CardRating(props) {
-  return <div className="card-rating">★★★★★</div>;
+  let stars = '';
+
+  for (let i = 0; i < props.rating; i++) {
+    stars = stars + '★';
+  }
+  return <div className="card-rating">{stars}</div>;
 }
