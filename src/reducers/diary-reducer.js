@@ -7,10 +7,7 @@ import {
 
 const initialState = {
   error: null,
-  userSignedIn: true,
-  userID: '',
-  diaryFilms: [],
-  searchFilms: []
+  diaryFilms: []
 };
 
 export function diaryReducer(state = initialState, action) {

@@ -23,7 +23,12 @@ export function Navbar(props) {
 
 function generateNavbarLinks(props) {
   if (props.userSignedIn) {
-    return <Link to="/search">Search</Link>;
+    return (
+      <div>
+        <Link to="/">Diary</Link>
+        <Link to="/search">Search</Link>
+      </div>
+    );
   }
   return <Link to="/login">Login</Link>;
 }

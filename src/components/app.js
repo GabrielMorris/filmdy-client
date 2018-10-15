@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requireAuth from './authentication/require-auth';
 
+import { refreshAuthToken } from '../actions/auth';
+
 // React router
 import {
   BrowserRouter as Router,
@@ -20,32 +22,72 @@ import Landing from './landing/landing';
 
 // Styles
 
-function App(props) {
-  return appComponentBuilder(props);
-}
+class App extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
+      // When we are logged in, refresh the auth token periodically
+      this.startPeriodicRefresh();
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
+      // Stop refreshing when we log out
+      this.stopPeriodicRefresh();
+    }
+  }
 
-function appComponentBuilder(props) {
-  return (
-    <Router>
-      <div>
-        <Navbar />
-        <main>
-          {/* Diary route */}
-          <Route
-            exact
-            path="/"
-            component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
-          />
+  componentWillUnmount() {
+    this.stopPeriodicRefresh();
+  }
 
-          {/* Search route */}
-          <Route exact path="/search" component={SearchContainer} />
+  startPeriodicRefresh() {
+    this.refreshInterval = setInterval(
+      () => this.props.dispatch(refreshAuthToken()),
+      60 * 60 * 1000 // One hour
+    );
+  }
 
-          {/* Login/signup route */}
-          <Route exact path="/login" component={AuthContainer} />
-        </main>
-      </div>
-    </Router>
-  );
+  stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+      return;
+    }
+
+    clearInterval(this.refreshInterval);
+  }
+
+  appComponentBuilder(props) {
+    return (
+      <Router>
+        <div>
+          <Navbar />
+          <main>
+            {/* Diary route */}
+            <Route
+              exact
+              path="/"
+              component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
+            />
+            {/* <PrivateRoute path="/diary" component={FilmDiary} /> */}
+
+            {/* Search route */}
+            <Route
+              exact
+              path="/search"
+              component={
+                props.userSignedIn
+                  ? requireAuth(SearchContainer)
+                  : AuthContainer
+              }
+            />
+
+            {/* Login/signup route */}
+            <Route exact path="/login" component={AuthContainer} />
+          </main>
+        </div>
+      </Router>
+    );
+  }
+
+  render() {
+    return this.appComponentBuilder(this.props);
+  }
 }
 
 const mapStateToProps = state => ({
