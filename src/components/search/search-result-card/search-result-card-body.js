@@ -16,7 +16,7 @@ function SearchResultCardPoster(props) {
         className="watched-button"
         onClick={event => onClick(event, props)}
       >
-        Watched!
+        {props.watched ? 'Unwatch!' : 'Watched!'}
       </button>
     </div>
   );
@@ -35,6 +35,7 @@ function onClick(event, props) {
     })
     .then(response => {
       console.log(response);
+      const actors = response.Actors.replace(/"/g, '', -1).split(' ');
 
       const newFilmObject = {
         userID: props.userID,
@@ -42,7 +43,7 @@ function onClick(event, props) {
           imdbID,
           title: response.Title,
           plot: response.Plot,
-          actors: response.Actors,
+          actors: actors,
           poster: response.Poster,
           ratings: response.Ratings,
           // TODO: make this dynamic somehow
