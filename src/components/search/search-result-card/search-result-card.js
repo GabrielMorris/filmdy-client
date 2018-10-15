@@ -11,16 +11,11 @@ import './search-result-card.css';
 
 function SearchResultCard(props) {
   console.log(props);
-  /*
-  get imdbid and userid
-  find user's diary
-  array.includes on array
-  return Unwatch : watched
-  */
 
   const imdbID = props.film.imdbID;
   let watched;
 
+  // Checks to see if a film is found in the user's diary and then sets watched status accordingly
   if (props.diaryFilms.find(film => film.imdbID === imdbID)) {
     watched = true;
   } else {
