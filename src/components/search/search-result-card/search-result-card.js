@@ -2,9 +2,8 @@
 import React from 'react';
 
 // Components
-import SearchResultCardHeader from './search-result-card-header';
+import SearchResultCardBody from './search-result-card-body';
 import SearchResultCardPoster from './search-result-card-poster';
-import SearchResultCardPlot from './search-result-card-plot';
 
 // Styles
 import './search-result-card.css';
@@ -22,8 +21,7 @@ export default function SearchResultCard(props) {
 
         {/* Header */}
         <div className="column">
-          <SearchResultCardHeader film={props.film} />
-          {/* <SearchResultCardPlot film={props.film} /> */}
+          <SearchResultCardBody film={props.film} />
         </div>
       </div>
     </div>

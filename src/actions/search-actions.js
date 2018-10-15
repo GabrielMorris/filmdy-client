@@ -3,6 +3,7 @@
 import { API_KEY } from '../config';
 const SEARCH_URI = 'http://www.omdbapi.com/?s=';
 
+/* === Fetch search results === */
 // Async
 export const fetchSearchFilms = searchTerm => dispatch => {
   dispatch(searchFilmRequest());
@@ -26,26 +27,6 @@ export const fetchSearchFilms = searchTerm => dispatch => {
         return response.Search;
       })
       .then(filmsSearchArray => {
-        // const filmsArrayWithDescriptions = filmsSearchArray.map(film => {
-        //   const imdbID = film.imdbID;
-        //   const filmWithDescription = film;
-        //   const DETAILS_URI = `http://www.omdbapi.com/?i=${imdbID}&plot=full${API_KEY}`;
-
-        //   fetch(DETAILS_URI)
-        //     .then(response => {
-        //       return response.json();
-        //     })
-        //     .then(response => {
-        //       // console.log(response);
-        //       filmWithDescription.Plot = response.Plot;
-        //     });
-
-        //   console.log(filmWithDescription);
-
-        //   return filmWithDescription;
-        // });
-        // console.log(filmsArrayWithDescriptions);
-        // dispatch(searchFilmSuccess(filmsArrayWithDescriptions));
         dispatch(searchFilmSuccess(filmsSearchArray));
       })
       .catch(error => {
@@ -73,3 +54,37 @@ export const searchFilmError = error => ({
   type: SEARCH_FILM_ERROR,
   error
 });
+
+// /* === Update film watched status === */
+// // Async
+// export const updateWatchedStatus = imdbID => dispatch => {
+//   dispatch(updateWatchedStatusRequest());
+
+//   return fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
+//     .then(response => {
+//       console.log(response);
+//     })
+//     .catch(error => {
+//       console.log('hitting error in update watched status');
+//       console.error(error);
+//       dispatch(updateWatchedStatusError());
+//     });
+// };
+
+// // Sync
+// export const UPDATE_WATCHED_STATUS_REQUEST = 'UPDATE_WATCHED_STATUS_REQUEST';
+// export const updateWatchedStatusRequest = () => ({
+//   type: UPDATE_WATCHED_STATUS_REQUEST
+// });
+
+// export const UPDATE_WATCHED_STATUS_SUCCESS = 'UPDATE_WATCHED_STATUS_SUCCESS';
+// export const updateWatchedStatusSuccess = watchedStatus => ({
+//   type: UPDATE_WATCHED_STATUS_REQUEST,
+//   watchedStatus
+// });
+
+// export const UPDATE_WATCHED_STATUS_ERROR = 'UPDATE_WATCHED_STATUS_ERROR';
+// export const updateWatchedStatusError = error => ({
+//   type: UPDATE_WATCHED_STATUS_REQUEST,
+//   error
+// });
