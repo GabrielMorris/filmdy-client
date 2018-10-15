@@ -10,42 +10,20 @@ import Store from './store/store';
 
 // Components
 import App from './components/app';
-import Navbar from './components/navbar/navbar';
+// import Navbar from './components/navbar/navbar';
 
 // Styles
 import './index.css';
 
 ReactDOM.render(
   <div>
-    <Navbar />
+    {/* <Navbar /> */}
     <Provider store={Store}>
       <App />
     </Provider>
   </div>,
   document.getElementById('root')
 );
-
-// /*
-//   *** STORE
-// store: {
-//   error: null,
-//   diaryFilms: [
-//     {
-//       imdbID: 'tt3896198',
-//       title: 'Guardians of the Galaxy Vol. 2',
-//       plot: 'lorem ipsum',
-//       actors: [actor, actor],
-//       etc...
-//     }
-//   ],
-//   searchFilms: [
-//     {
-//       imdbID: 'tt3896198',
-//       title: 'Guardians of the Galaxy Vol. 2',
-//       etc...
-//     }
-//   ]
-// }
 
 // *** HIERARCHY
 

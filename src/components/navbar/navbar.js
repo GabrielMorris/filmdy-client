@@ -1,22 +1,35 @@
 // React
 import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Components
 // Styles
 import './navbar.css';
 
-export default function Navbar(props) {
+export function Navbar(props) {
   return (
     <nav>
       {/* Header */}
-      <a href="/">
+      <Link to="/">
+        {' '}
         <h1>Filmdy</h1>
-      </a>
-
-      {/* Search button */}
-      <a id="search" href="/search">
-        Search
-      </a>
+      </Link>
+      {/* Navbar buttons */}
+      {generateNavbarLinks(props)}
     </nav>
   );
 }
+
+function generateNavbarLinks(props) {
+  if (props.userSignedIn) {
+    return <Link to="/search">Search</Link>;
+  }
+  return <Link to="/login">Login</Link>;
+}
+
+const mapStateToProps = state => ({
+  userSignedIn: state.auth.currentUser
+});
+
+export default connect(mapStateToProps)(Navbar);

@@ -38,7 +38,7 @@ const mapStateToProps = state => ({
   diaryFilms: state.diary.diaryFilms,
   searchFilms: state.diary.searchFilms,
   userID: state.auth.currentUser.id,
-  token: state.auth.authToken
+  token: localStorage.getItem('authToken')
 });
 
 export default connect(mapStateToProps)(FilmDiary);

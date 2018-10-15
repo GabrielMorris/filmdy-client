@@ -12,6 +12,7 @@ import {
 } from 'react-router-dom';
 
 // Components
+import Navbar from '../components/navbar/navbar';
 import FilmDiary from './diary/film-diary/film-diary';
 import SearchContainer from './search/search-container';
 import AuthContainer from './authentication/auth-container';
@@ -26,20 +27,23 @@ function App(props) {
 function appComponentBuilder(props) {
   return (
     <Router>
-      <main>
-        {/* Diary route */}
-        <Route
-          exact
-          path="/"
-          component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
-        />
+      <div>
+        <Navbar />
+        <main>
+          {/* Diary route */}
+          <Route
+            exact
+            path="/"
+            component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
+          />
 
-        {/* Search route */}
-        <Route exact path="/search" component={SearchContainer} />
+          {/* Search route */}
+          <Route exact path="/search" component={SearchContainer} />
 
-        {/* Login/signup route */}
-        <Route exact path="/login" component={AuthContainer} />
-      </main>
+          {/* Login/signup route */}
+          <Route exact path="/login" component={AuthContainer} />
+        </main>
+      </div>
     </Router>
   );
 }
