@@ -3,18 +3,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { API_KEY } from '../../../config';
 
-import { updateWatchedStatus } from '../../../actions/search-actions'
-
 // Components
 
 // Styles
 import './search-result-card-body.css';
 
 class SearchResultCardBody extends React.Component {
-  componentDidMount() {
-    this.props.dispatch(updateWatchedStatus('tt3896198'))
-  }
-
   addFilmToDiary() {
     console.log('addiong to diary');
     const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
@@ -62,6 +56,10 @@ class SearchResultCardBody extends React.Component {
             return response.json();
           })
           .catch(err => console.error(err));
+      })
+      .then(() => {
+        // We push / to the end of the history array so that the component will refresh
+        this.props.history.push('/');
       })
       .catch(error => {
         console.log('hitting error in update watched status');

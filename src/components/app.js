@@ -64,7 +64,6 @@ class App extends React.Component {
               path="/"
               component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
             />
-            {/* <PrivateRoute path="/diary" component={FilmDiary} /> */}
 
             {/* Search route */}
             <Route

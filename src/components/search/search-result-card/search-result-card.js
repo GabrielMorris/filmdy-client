@@ -33,7 +33,11 @@ function SearchResultCard(props) {
 
         {/* Header */}
         <div className="column">
-          <SearchResultCardBody film={props.film} watched={watched} />
+          <SearchResultCardBody
+            film={props.film}
+            watched={watched}
+            history={props.history}
+          />
         </div>
       </div>
     </div>

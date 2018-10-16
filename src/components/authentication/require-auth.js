@@ -21,7 +21,10 @@ export default function(ComposedComponent) {
   }
 
   function mapStateToProps(state) {
-    return { authenticated: state.auth.authToken };
+    return {
+      authenticated: state.auth.authToken,
+      timestamp: new Date().toString()
+    };
   }
 
   return connect(mapStateToProps)(Authentication);

@@ -11,7 +11,7 @@ export default function SearchContainer(props) {
   return (
     <div>
       <Search />
-      <SearchResults />
+      <SearchResults history={props.history} />
     </div>
   );
 }
