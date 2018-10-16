@@ -69,6 +69,8 @@ class SearchResultCardBody extends React.Component {
 
   removeFilmFromDiary() {
     console.log('removing from diary');
+    const imdbID = this.props.film.imdbID;
+
     fetch(`http://localhost:8080/api/films`, {
       method: 'DELETE',
       headers: {
@@ -77,9 +79,13 @@ class SearchResultCardBody extends React.Component {
       },
       body: JSON.stringify({
         userID: this.props.userID,
-        imdbD: this.props.film.imdbID
+        imdbID
       })
-    });
+    })
+      .then(() => {
+        this.props.history.push('/');
+      })
+      .catch(error => console.error(error));
   }
 
   onClick(event) {

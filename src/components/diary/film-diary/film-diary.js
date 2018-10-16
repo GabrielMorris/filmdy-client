@@ -20,7 +20,9 @@ export class FilmDiary extends React.Component {
   generateFilmCards() {
     console.log(this.props.diaryFilms);
     return this.props.diaryFilms.map(film => {
-      return <Card key={film.diaryID} film={film} />;
+      return (
+        <Card key={film.diaryID} film={film} history={this.props.history} />
+      );
     });
   }
 

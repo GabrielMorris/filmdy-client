@@ -8,6 +8,7 @@ import CardDescription from './card-description';
 import CardActors from './card-actors';
 import CardRating from './card-rating';
 import CardCritics from './card-critics';
+import CardButtons from './card-buttons';
 
 // Styles
 import './card.css';
@@ -38,6 +39,9 @@ export default function Card(props) {
 
           {/* Critics */}
           <CardCritics criticalRatings={props.film.ratings} />
+
+          {/* Unwatch */}
+          <CardButtons film={props.film} history={props.history} />
         </div>
       </div>
     </div>
