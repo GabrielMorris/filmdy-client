@@ -13,7 +13,7 @@ export default function CardHeader(props) {
     rating = '👎';
   }
   return (
-    <div>
+    <div className="card-header">
       <h3>
         {props.title} <span>{rating}</span>
       </h3>

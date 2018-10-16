@@ -40,14 +40,17 @@ export default function Card(props) {
 
           {/* Critics */}
           <CardCritics criticalRatings={props.film.ratings} />
-
-          {/* Unwatch */}
-          <CardButtons
-            film={props.film}
-            history={props.history}
-            rating={props.film.userRating}
-          />
         </div>
+      </div>
+
+      {/* Row */}
+      <div className="row">
+        {/* Unwatch */}
+        <CardButtons
+          film={props.film}
+          history={props.history}
+          rating={props.film.userRating}
+        />
       </div>
     </div>
   );

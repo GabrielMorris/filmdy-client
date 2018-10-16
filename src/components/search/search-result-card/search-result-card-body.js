@@ -23,7 +23,9 @@ class SearchResultCardBody extends React.Component {
       .then(response => {
         console.log(response);
         // Make actors into an array without quotes
-        const actors = response.Actors.replace(/"/g, '', -1).split(' ');
+        const actors = response.Actors.replace(/"/g, '', -1)
+          .replace(/,/g, '', -1)
+          .split(' ');
 
         const newFilmObject = {
           userID: this.props.userID,

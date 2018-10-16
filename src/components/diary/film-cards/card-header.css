@@ -1,7 +1,21 @@
 h3 {
+  /* Text */
   text-align: center;
+  color: #ffffff;
+
+  /* Margin */
+  margin: 0;
+
+  /* Padding */
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 h2 {
   text-align: center;
+}
+
+.card-header {
+  background-color: #424242;
+  margin-bottom: 1rem;
 }

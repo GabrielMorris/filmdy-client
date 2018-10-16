@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 
 // Components
 // Styles
+import './card-buttons.css';
 
 function CardButton(props) {
   return (
-    <div>
+    <div className="card-buttons-container">
       <button
         onClick={event => {
           console.log('unwatch button clicked');
