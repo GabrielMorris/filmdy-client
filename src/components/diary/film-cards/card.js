@@ -6,7 +6,6 @@ import CardHeader from './card-header';
 import CardPoster from './card-poster';
 import CardDescription from './card-description';
 import CardActors from './card-actors';
-import CardRating from './card-rating';
 import CardCritics from './card-critics';
 import CardButtons from './card-buttons';
 
@@ -19,18 +18,20 @@ export default function Card(props) {
   return (
     // Film card
     <div className="film-card">
-      {/* Header */}
-      <CardHeader title={props.film.title} />
+      {/* Header and user rating */}
+
+      <CardHeader title={props.film.title} rating={props.film.userRating} />
+
+      {/* Row */}
       <div className="row">
+        {/* Column */}
         <div className="image-column">
           {/* Poster */}
           <CardPoster poster={props.film.poster} />
         </div>
 
+        {/* Column */}
         <div className="column">
-          {/* User rating */}
-          <CardRating rating={props.film.userRating} />
-
           {/* Plot */}
           <CardDescription plot={props.film.plot} />
 
@@ -41,7 +42,11 @@ export default function Card(props) {
           <CardCritics criticalRatings={props.film.ratings} />
 
           {/* Unwatch */}
-          <CardButtons film={props.film} history={props.history} />
+          <CardButtons
+            film={props.film}
+            history={props.history}
+            rating={props.film.userRating}
+          />
         </div>
       </div>
     </div>

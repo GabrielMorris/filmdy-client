@@ -5,9 +5,18 @@ import React from 'react';
 import './card-header.css';
 
 export default function CardHeader(props) {
+  let rating;
+
+  if (props.rating === true) {
+    rating = '👍';
+  } else {
+    rating = '👎';
+  }
   return (
     <div>
-      <h3>{props.title}</h3>
+      <h3>
+        {props.title} <span>{rating}</span>
+      </h3>
     </div>
   );
 }

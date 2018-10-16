@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // Components
 import Card from '../film-cards/card';
 import Grid from 'react-css-grid';
+import FilmDiarySearch from './film-diary-search';
 
 // Actions
 import { fetchDiaryFilms } from '../../../actions/diary-actions';
@@ -18,8 +19,11 @@ export class FilmDiary extends React.Component {
 
   // Function for generating all the cards
   generateFilmCards() {
-    console.log(this.props.diaryFilms);
-    return this.props.diaryFilms.map(film => {
+    console.log(this.props.filteredDiaryFilms);
+    // Descending order
+    const reversedDiary = this.props.filteredDiaryFilms;
+
+    return reversedDiary.map(film => {
       return (
         <Card key={film.diaryID} film={film} history={this.props.history} />
       );
@@ -28,9 +32,12 @@ export class FilmDiary extends React.Component {
 
   render() {
     return (
-      <Grid width={320} gap={24}>
-        {this.generateFilmCards()}
-      </Grid>
+      <div>
+        <FilmDiarySearch userID={this.props.userID} token={this.props.token} />
+        <Grid width={320} gap={24}>
+          {this.generateFilmCards()}
+        </Grid>
+      </div>
     );
   }
 }
@@ -38,7 +45,8 @@ export class FilmDiary extends React.Component {
 const mapStateToProps = state => ({
   error: state.diary.error,
   diaryFilms: state.diary.diaryFilms,
-  searchFilms: state.diary.searchFilms,
+  filteredDiaryFilms: state.diary.filteredDiaryFilms,
+  // searchFilms: state.diary.searchFilms,
   userID: state.auth.currentUser.id,
   token: localStorage.getItem('authToken')
 });

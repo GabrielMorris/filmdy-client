@@ -1,6 +1,6 @@
 /* Fetching diary films */
 // Async
-export const fetchDiaryFilms = (token, userID) => dispatch => {
+export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
   dispatch(fetchDiaryFilmsRequest());
   console.log(1);
   console.log('hhhhh', userID);
@@ -28,7 +28,14 @@ export const fetchDiaryFilms = (token, userID) => dispatch => {
     })
     .then(diaryFilms => {
       console.log(6);
-      dispatch(fetchDiaryFilmsSuccess(diaryFilms));
+      if (searchTerm !== '') {
+        const filteredDiary = diaryFilms.filter(film =>
+          film.title.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        dispatch(fetchDiaryFilmsSuccess(diaryFilms, filteredDiary, searchTerm));
+      } else {
+        dispatch(fetchDiaryFilmsSuccess(diaryFilms, diaryFilms, searchTerm));
+      }
     })
     .catch(error => {
       console.log(7);
@@ -44,9 +51,15 @@ export const fetchDiaryFilmsRequest = () => ({
 });
 
 export const FETCH_DIARY_FILMS_SUCCESS = 'FETCH_DIARY_FILMS_SUCCESS';
-export const fetchDiaryFilmsSuccess = diaryFilms => ({
+export const fetchDiaryFilmsSuccess = (
+  diaryFilms,
+  filteredDiaryFilms,
+  searchTerm
+) => ({
   type: FETCH_DIARY_FILMS_SUCCESS,
-  diaryFilms
+  diaryFilms,
+  filteredDiaryFilms,
+  searchTerm
 });
 
 export const FETCH_DIARY_FILMS_ERROR = 'FETCH_DIARY_FILMS_ERROR';
