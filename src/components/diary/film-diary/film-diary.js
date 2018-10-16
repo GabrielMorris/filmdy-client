@@ -20,10 +20,8 @@ export class FilmDiary extends React.Component {
   // Function for generating all the cards
   generateFilmCards() {
     console.log(this.props.filteredDiaryFilms);
-    // Descending order
-    const reversedDiary = this.props.filteredDiaryFilms;
 
-    return reversedDiary.map(film => {
+    return this.props.filteredDiaryFilms.map(film => {
       return (
         <Card key={film.diaryID} film={film} history={this.props.history} />
       );

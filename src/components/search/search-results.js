@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 // Components
 import SearchResultCard from './search-result-card/search-result-card';
+import Grid from 'react-css-grid';
 
 // Styles
 import './search-results.css';
@@ -17,19 +18,24 @@ export class SearchResults extends React.Component {
   generateFilmResults() {
     return this.props.searchResults.map((film, index) => {
       return (
-        <li key={index}>
-          <SearchResultCard
-            film={film}
-            diaryFilms={this.props.diaryFilms}
-            history={this.props.history}
-          />
-        </li>
+        // <li key={index}>
+        <SearchResultCard
+          film={film}
+          diaryFilms={this.props.diaryFilms}
+          history={this.props.history}
+          key={index}
+        />
+        // </li>
       );
     });
   }
 
   render() {
-    return <ul>{this.generateFilmResults()}</ul>;
+    return (
+      <Grid width={320} gap={24}>
+        {this.generateFilmResults()}
+      </Grid>
+    );
   }
 }
 

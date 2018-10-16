@@ -2,8 +2,7 @@
 // Async
 export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
   dispatch(fetchDiaryFilmsRequest());
-  console.log(1);
-  console.log('hhhhh', userID);
+  console.log('userID: ', userID);
 
   return fetch(`http://localhost:8080/api/films?userID=${userID}`, {
     headers: {
@@ -13,32 +12,38 @@ export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
     .then(response => {
       console.log(response);
       if (!response.ok) {
-        console.log(3);
         return Promise.reject(response.statusText);
       }
-      console.log(4);
       console.log(response);
       return response.json();
     })
     .then(films => {
-      console.log(5);
       console.log(films);
-      // TODO: this will probably need to be changed
       return films[0].diaryFilms;
     })
     .then(diaryFilms => {
-      console.log(6);
       if (searchTerm !== '') {
-        const filteredDiary = diaryFilms.filter(film =>
-          film.title.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        // Filter and reverse the array so we have descending order
+        const filteredDiary = diaryFilms
+          .filter(film =>
+            film.title.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+          .reverse();
+
         dispatch(fetchDiaryFilmsSuccess(diaryFilms, filteredDiary, searchTerm));
       } else {
-        dispatch(fetchDiaryFilmsSuccess(diaryFilms, diaryFilms, searchTerm));
+        // Reverse the array so we have it in descending order
+        const reversedDiaryFilms = diaryFilms.reverse();
+        dispatch(
+          fetchDiaryFilmsSuccess(
+            reversedDiaryFilms,
+            reversedDiaryFilms,
+            searchTerm
+          )
+        );
       }
     })
     .catch(error => {
-      console.log(7);
       console.error(error);
       dispatch(fetchDiaryFilmsError(error));
     });

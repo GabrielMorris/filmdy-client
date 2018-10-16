@@ -21,6 +21,7 @@ import AuthContainer from './authentication/auth-container';
 import Landing from './landing/landing';
 
 // Styles
+import './app.css';
 
 class App extends React.Component {
   componentDidUpdate(prevProps) {

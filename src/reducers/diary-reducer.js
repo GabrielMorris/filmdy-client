@@ -20,8 +20,8 @@ export function diaryReducer(state = initialState, action) {
     console.log('fetch diary success in reducer');
     console.log(action);
     return Object.assign({}, state, {
-      diaryFilms: action.diaryFilms.reverse(),
-      filteredDiaryFilms: action.filteredDiaryFilms.reverse()
+      diaryFilms: action.diaryFilms,
+      filteredDiaryFilms: action.filteredDiaryFilms
     });
   } else if (action.type === FETCH_DIARY_FILMS_ERROR) {
     // Error

@@ -13,7 +13,7 @@ import CardButtons from './card-buttons';
 import './card.css';
 
 export default function Card(props) {
-  console.log(props.film);
+  // console.log(props.film);
 
   return (
     // Film card
