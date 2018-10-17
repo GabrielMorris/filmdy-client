@@ -5,3 +5,7 @@ ul {
 li {
   list-style-type: none;
 }
+
+.search-error {
+  text-align: center;
+}

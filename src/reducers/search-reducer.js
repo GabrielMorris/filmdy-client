@@ -8,7 +8,8 @@ import {
 // Initial state
 const initialState = {
   searchResults: [],
-  searchTerm: ''
+  searchTerm: '',
+  searchError: null
 };
 
 export function searchReducer(state = initialState, action) {
@@ -20,10 +21,15 @@ export function searchReducer(state = initialState, action) {
 
     return Object.assign({}, state, {
       searchResults: action.searchResults,
-      searchTerm: action.searchTerm
+      searchTerm: action.searchTerm,
+      searchError: null
     });
   } else if (action.type === SEARCH_FILM_ERROR) {
     console.log('error in search reducer');
+
+    return Object.assign({}, state, {
+      searchError: action.error
+    });
   }
   // Return initial state
   return state;

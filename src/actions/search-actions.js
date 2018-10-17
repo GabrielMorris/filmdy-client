@@ -31,7 +31,7 @@ export const fetchSearchFilms = searchTerm => dispatch => {
       })
       .catch(error => {
         console.log('hitting error');
-        console.error(error);
+        console.log(error);
         dispatch(searchFilmError(error));
       });
   }
@@ -44,9 +44,10 @@ export const searchFilmRequest = () => ({
 });
 
 export const SEARCH_FILM_SUCCESS = 'SEARCH_FILM_SUCCESS';
-export const searchFilmSuccess = searchResults => ({
+export const searchFilmSuccess = (searchResults, searchTerm) => ({
   type: SEARCH_FILM_SUCCESS,
-  searchResults
+  searchResults,
+  searchTerm
 });
 
 export const SEARCH_FILM_ERROR = 'SEARCH_FILM_ERROR';

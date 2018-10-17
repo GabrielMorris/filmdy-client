@@ -16,16 +16,20 @@ export class SearchResults extends React.Component {
   }
 
   generateFilmResults() {
+    // If we have an error in the storage return that
+    if (this.props.searchError) {
+      return <div className="search-error">{this.props.searchError}</div>;
+    }
+
+    // Otherwise map over the results and create card components
     return this.props.searchResults.map((film, index) => {
       return (
-        // <li key={index}>
         <SearchResultCard
           film={film}
           diaryFilms={this.props.diaryFilms}
           history={this.props.history}
           key={index}
         />
-        // </li>
       );
     });
   }
@@ -41,6 +45,7 @@ export class SearchResults extends React.Component {
 
 const mapStateToProps = state => ({
   searchResults: state.search.searchResults,
+  searchError: state.search.searchError,
   diaryFilms: state.diary.diaryFilms,
   userID: state.auth.currentUser.id,
   token: localStorage.getItem('authToken')
