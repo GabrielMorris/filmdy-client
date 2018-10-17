@@ -2,6 +2,7 @@
 // const API_KEY = process.env.OMDB_API_KEY;
 import { API_KEY } from '../config';
 const SEARCH_URI = 'http://www.omdbapi.com/?s=';
+const SEARCH_FILM_ONLY_PARAM = '&type=movie';
 
 /* === Fetch search results === */
 // Async
@@ -13,7 +14,9 @@ export const fetchSearchFilms = searchTerm => dispatch => {
       ? searchTerm.toLowerCase().replace(/ /g, '+', -1)
       : '';
 
-    return fetch(`${SEARCH_URI}${plussedSearchTerm}${API_KEY}`)
+    return fetch(
+      `${SEARCH_URI}${plussedSearchTerm}${SEARCH_FILM_ONLY_PARAM}${API_KEY}`
+    )
       .then(response => {
         console.log(response);
         return response.json();
