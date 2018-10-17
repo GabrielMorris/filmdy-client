@@ -17,7 +17,6 @@ import './card-buttons.css';
 class CardButton extends React.Component {
   toggleFilmLikedStatus() {
     console.log('like clicked');
-
     const { token, userID, imdbID } = this.extractArgsFromProps();
 
     this.props.dispatch(toggleFilmLiked(imdbID, userID, token));
@@ -26,14 +25,12 @@ class CardButton extends React.Component {
   generateLikeButtons(props) {
     // Like
     if (!props.rating) {
-      return (
-        <button onClick={event => this.toggleFilmLikedStatus()}>Like</button>
-      );
+      return <button onClick={() => this.toggleFilmLikedStatus()}>Like</button>;
     }
 
     // Dislike
     return (
-      <button onClick={event => this.toggleFilmLikedStatus()}>Dislike</button>
+      <button onClick={() => this.toggleFilmLikedStatus()}>Dislike</button>
     );
   }
 

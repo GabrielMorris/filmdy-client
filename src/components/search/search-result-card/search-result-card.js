@@ -3,47 +3,67 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
+import FilmModal from '../../modals/film-modal';
 import SearchResultCardBody from './search-result-card-body';
 import SearchResultCardPoster from './search-result-card-poster';
+
+// Actions
+import { toggleModal } from '../../../actions/modal-actions';
 
 // Styles
 import './search-result-card.css';
 
-function SearchResultCard(props) {
-  console.log(props);
+class SearchResultCard extends React.Component {
+  constructor() {
+    super();
 
-  const imdbID = props.film.imdbID;
-  let watched;
-
-  // Checks to see if a film is found in the user's diary and then sets watched status accordingly
-  if (props.diaryFilms.find(film => film.imdbID === imdbID)) {
-    watched = true;
-  } else {
-    watched = false;
+    this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
-  return (
-    <div className="film-card">
-      {/* Row */}
-      <div className="row">
-        {/* Poster */}
-        <div className="image-column">
-          <SearchResultCardPoster poster={props.film.Poster} />
-        </div>
+  // Modal functions
+  handleOpenModal() {
+    const imdbID = this.props.film.imdbID;
 
-        {/* Header */}
-        <div className="column">
-          <SearchResultCardBody
-            film={props.film}
-            watched={watched}
-            history={props.history}
-          />
+    this.props.dispatch(toggleModal(true, imdbID));
+  }
+
+  render() {
+    const imdbID = this.props.film.imdbID;
+    let watched;
+
+    // Checks to see if a film is found in the user's diary and then sets watched status accordingly
+    if (this.props.diaryFilms.find(film => film.imdbID === imdbID)) {
+      watched = true;
+    } else {
+      watched = false;
+    }
+
+    return (
+      <div className="film-card">
+        {/* Modal */}
+        <FilmModal />
+
+        {/* Row */}
+        <div className="row">
+          {/* Poster */}
+          <div className="image-column">
+            <SearchResultCardPoster poster={this.props.film.Poster} />
+          </div>
+
+          {/* Header */}
+          <div className="column">
+            <SearchResultCardBody
+              film={this.props.film}
+              watched={watched}
+              history={this.props.history}
+              onClick={this.handleOpenModal}
+            />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
-
 const mapStateToProps = state => ({
   userID: state.auth.currentUser.id,
   token: state.auth.authToken

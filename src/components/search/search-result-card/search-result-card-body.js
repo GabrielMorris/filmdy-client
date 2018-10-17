@@ -46,7 +46,9 @@ class SearchResultCardBody extends React.Component {
   render() {
     return (
       <div>
-        <h2>{this.props.film.Title}</h2>
+        <h2 className="search-card-header" onClick={this.props.onClick}>
+          {this.props.film.Title}
+        </h2>
         <button
           className="watched-button"
           onClick={event => this.onClick(event)}
