@@ -4,13 +4,17 @@ const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
 export const toggleModal = (bool, imdbID = '') => dispatch => {
   dispatch(toggleModalRequest());
 
-  return fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
-    .then(response => response.json())
-    .then(film => {
-      console.log(film);
-      dispatch(toggleModalSuccess(bool, imdbID, film));
-    })
-    .catch(error => toggleModalError(error));
+  if (imdbID !== '') {
+    return fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
+      .then(response => response.json())
+      .then(film => {
+        console.log(film);
+        dispatch(toggleModalSuccess(bool, imdbID, film));
+      })
+      .catch(error => toggleModalError(error));
+  } else {
+    dispatch(toggleModalSuccess(false, '', {}));
+  }
 };
 
 export const TOGGLE_MODAL_REQUEST = 'TOGGLE_MODAL_REQUEST';

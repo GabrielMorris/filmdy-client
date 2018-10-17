@@ -18,7 +18,7 @@ export function AuthContainer(props) {
   return (
     <div>
       <Login />
-      {/* <Signup /> */}
+      <Signup />
     </div>
   );
 }

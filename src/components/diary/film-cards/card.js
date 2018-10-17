@@ -1,7 +1,9 @@
 // React
 import React from 'react';
+import { connect } from 'react-redux';
 
 // Components
+import FilmModal from '../../modals/film-modal';
 import CardHeader from './card-header';
 import CardPoster from './card-poster';
 import CardDescription from './card-description';
@@ -9,47 +11,73 @@ import CardActors from './card-actors';
 import CardCritics from './card-critics';
 import CardButtons from './card-buttons';
 
+// Actions
+import { toggleModal } from '../../../actions/modal-actions';
+
 // Styles
 import './card.css';
 
-export default function Card(props) {
-  return (
-    // Film card
-    <div className="film-card">
-      {/* Header and user rating */}
+class Card extends React.Component {
+  constructor() {
+    super();
 
-      <CardHeader title={props.film.title} rating={props.film.userRating} />
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+  }
 
-      {/* Row */}
-      <div className="row">
-        {/* Column */}
-        <div className="image-column">
-          {/* Poster */}
-          <CardPoster poster={props.film.poster} />
-        </div>
+  // Modal functions
+  handleOpenModal() {
+    const imdbID = this.props.film.imdbID;
 
-        {/* Column */}
-        <div className="column">
-          {/* Plot */}
-          <CardDescription plot={props.film.plot} />
+    this.props.dispatch(toggleModal(true, imdbID));
+  }
 
-          {/* Actors */}
-          <CardActors actors={props.film.actors} />
+  render() {
+    return (
+      // Film card
+      <div className="film-card">
+        {/* Modal */}
+        <FilmModal />
 
-          {/* Critics */}
-          <CardCritics criticalRatings={props.film.ratings} />
-        </div>
-      </div>
-
-      {/* Row */}
-      <div className="row">
-        {/* Unwatch */}
-        <CardButtons
-          film={props.film}
-          history={props.history}
-          rating={props.film.userRating}
+        {/* Header and user rating */}
+        <CardHeader
+          title={this.props.film.title}
+          rating={this.props.film.userRating}
+          onClick={this.handleOpenModal}
         />
+
+        {/* Row */}
+        <div className="row">
+          {/* Column */}
+          <div className="image-column">
+            {/* Poster */}
+            <CardPoster poster={this.props.film.poster} />
+          </div>
+
+          {/* Column */}
+          <div className="column">
+            {/* Plot */}
+            <CardDescription plot={this.props.film.plot} />
+
+            {/* Actors */}
+            <CardActors actors={this.props.film.actors} />
+
+            {/* Critics */}
+            <CardCritics criticalRatings={this.props.film.ratings} />
+          </div>
+        </div>
+
+        {/* Row */}
+        <div className="row">
+          {/* Unwatch */}
+          <CardButtons
+            film={this.props.film}
+            history={this.props.history}
+            rating={this.props.film.userRating}
+          />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default connect()(Card);

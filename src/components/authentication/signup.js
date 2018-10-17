@@ -49,6 +49,8 @@ export default class Signup extends React.Component {
             .catch(err => console.error(err));
         }}
       >
+        <h2>Signup</h2>
+
         <label htmlFor="signupUsername">Username</label>
         <input type="text" name="signupUsername" />
 

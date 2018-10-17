@@ -47,6 +47,7 @@ export class Login extends React.Component {
           this.onSubmit(userObject);
         }}
       >
+        <h2>Login</h2>
         <label htmlFor="loginUsername">Username</label>
         <input type="text" name="loginUsername" />
 

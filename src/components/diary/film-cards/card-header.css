@@ -18,4 +18,5 @@ h2 {
 .card-header {
   background-color: #424242;
   margin-bottom: 1rem;
+  cursor: pointer;
 }

@@ -13,7 +13,7 @@ export default function CardHeader(props) {
     rating = '👎';
   }
   return (
-    <div className="card-header">
+    <div className="card-header" onClick={props.onClick}>
       <h3>
         {props.title} <span>{rating}</span>
       </h3>
