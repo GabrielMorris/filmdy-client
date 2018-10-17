@@ -3,6 +3,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { API_KEY } from '../../../config';
 
+// Actions
+import {
+  addFilmToDiary,
+  removeFilmFromDiary,
+  fetchDiaryFilms
+} from '../../../actions/diary-actions';
+
 // Components
 
 // Styles
@@ -10,84 +17,25 @@ import './search-result-card-body.css';
 
 class SearchResultCardBody extends React.Component {
   addFilmToDiary() {
-    console.log('addiong to diary');
-    const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
+    const { imdbID, token, userID } = this.extractDiaryActionKeys();
 
-    const imdbID = this.props.film.imdbID;
-
-    fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
-      .then(response => {
-        console.log(response);
-        return response.json();
-      })
-      .then(response => {
-        console.log(response);
-        // Make actors into an array without quotes
-        const actors = response.Actors.replace(/"/g, '', -1)
-          .replace(/,/g, '', -1)
-          .split(' ');
-
-        const newFilmObject = {
-          userID: this.props.userID,
-          film: {
-            imdbID,
-            title: response.Title,
-            plot: response.Plot,
-            actors: actors,
-            poster: response.Poster,
-            ratings: response.Ratings,
-            // TODO: make this dynamic somehow
-            userRating: true
-          }
-        };
-
-        return newFilmObject;
-      })
-      .then(film => {
-        console.log(film);
-
-        return fetch('http://localhost:8080/api/films', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-            Authorization: `Bearer ${this.props.token}`
-          },
-          body: JSON.stringify(film)
-        })
-          .then(response => {
-            return response.json();
-          })
-          .catch(err => console.error(err));
-      })
-      .then(() => {
-        // We push / to the end of the history array so that the component will refresh
-        this.props.history.push('/');
-      })
-      .catch(error => {
-        console.log('hitting error in update watched status');
-        console.error(error);
-      });
+    this.props.dispatch(addFilmToDiary(imdbID, userID, token));
   }
 
   removeFilmFromDiary() {
     console.log('removing from diary');
-    const imdbID = this.props.film.imdbID;
+    const { imdbID, token, userID } = this.extractDiaryActionKeys();
 
-    fetch(`http://localhost:8080/api/films`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-        Authorization: `Bearer ${this.props.token}`
-      },
-      body: JSON.stringify({
-        userID: this.props.userID,
-        imdbID
-      })
-    })
-      .then(() => {
-        this.props.history.push('/');
-      })
-      .catch(error => console.error(error));
+    this.props.dispatch(removeFilmFromDiary(imdbID, userID, token));
+    this.props.dispatch(fetchDiaryFilms(token, userID));
+  }
+
+  extractDiaryActionKeys() {
+    return {
+      imdbID: this.props.film.imdbID,
+      token: this.props.token,
+      userID: this.props.userID
+    };
   }
 
   onClick(event) {

@@ -2,88 +2,68 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+// Actions
+import {
+  removeFilmFromDiary,
+  fetchDiaryFilms,
+  toggleFilmLiked
+} from '../../../actions/diary-actions';
+
 // Components
 // Styles
 import './card-buttons.css';
 
-function CardButton(props) {
-  return (
-    <div className="card-buttons-container">
-      <button
-        onClick={event => {
-          console.log('unwatch button clicked');
+class CardButton extends React.Component {
+  toggleFilmLikedStatus() {
+    console.log('like clicked');
 
-          const imdbID = props.film.imdbID;
+    const { token, userID, imdbID } = this.extractArgsFromProps();
 
-          fetch(`http://localhost:8080/api/films`, {
-            method: 'DELETE',
-            headers: {
-              'Content-Type': 'application/json; charset=utf-8',
-              Authorization: `Bearer ${props.token}`
-            },
-            body: JSON.stringify({
-              userID: props.userID,
-              imdbID
-            })
-          })
-            // TODO: please for the love of god figure out how to do this better
-            .then(() => {
-              props.history.push('/search');
-            })
-            .then(() => {
-              props.history.push('/');
-            })
-            .catch(error => console.error(error));
-        }}
-      >
-        Unwatch
-      </button>
+    this.props.dispatch(toggleFilmLiked(imdbID, userID, token));
+  }
 
-      {generateLikeButtons(props)}
-    </div>
-  );
-}
+  generateLikeButtons(props) {
+    // Like
+    if (!props.rating) {
+      return (
+        <button onClick={event => this.toggleFilmLikedStatus()}>Like</button>
+      );
+    }
 
-function generateLikeButtons(props) {
-  // Like
-  if (!props.rating) {
+    // Dislike
     return (
-      <button onClick={event => toggleFilmLikedStatus(event, props)}>
-        Like
-      </button>
+      <button onClick={event => this.toggleFilmLikedStatus()}>Dislike</button>
     );
   }
 
-  // Dislike
-  return (
-    <button onClick={event => toggleFilmLikedStatus(event, props)}>
-      Dislike
-    </button>
-  );
-}
+  extractArgsFromProps() {
+    return {
+      token: this.props.token,
+      userID: this.props.userID,
+      imdbID: this.props.film.imdbID
+    };
+  }
 
-function toggleFilmLikedStatus(event, props) {
-  console.log('like clicked');
+  render() {
+    return (
+      <div className="card-buttons-container">
+        <button
+          onClick={event => {
+            console.log('unwatch button clicked');
 
-  fetch(`http://localhost:8080/api/films`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json; charset=utf-8',
-      Authorization: `Bearer ${props.token}`
-    },
-    body: JSON.stringify({
-      userID: props.userID,
-      imdbID: props.film.imdbID
-    })
-  })
-    // TODO: please address this good lord
-    .then(() => {
-      props.history.push('/search');
-    })
-    .then(() => {
-      props.history.push('/');
-    })
-    .catch(error => console.error(error));
+            const { token, userID, imdbID } = this.extractArgsFromProps();
+
+            this.props.dispatch(removeFilmFromDiary(imdbID, userID, token));
+            this.props.dispatch(fetchDiaryFilms(token, userID));
+          }}
+        >
+          Unwatch
+        </button>
+
+        {this.generateLikeButtons(this.props)}
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
