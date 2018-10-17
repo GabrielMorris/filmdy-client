@@ -28,7 +28,12 @@ export class DiarySearchForm extends React.Component {
           onChange={this.props.handleSubmit(values => this.onChange(values))}
         >
           <label htmlFor="searchInput">Filter: </label>
-          <Field name="searchInput" type="text" component="input" />
+          <Field
+            name="searchInput"
+            type="text"
+            placeholder="Harry Potter"
+            component="input"
+          />
 
           <button
             onClick={values => {

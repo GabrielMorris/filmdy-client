@@ -28,7 +28,12 @@ export class SearchForm extends React.Component {
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
           <label htmlFor="searchInput">Search: </label>
-          <Field name="searchInput" type="text" component="input" />
+          <Field
+            name="searchInput"
+            type="text"
+            placeholder="Lord of the Rings"
+            component="input"
+          />
 
           <button type="submit">Submit</button>
         </form>
