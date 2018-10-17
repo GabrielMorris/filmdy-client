@@ -34,6 +34,7 @@ export function authReducer(state = initialState, action) {
       currentUser: action.currentUser
     });
   } else if (action.type === AUTH_ERROR) {
+    console.log('hello');
     return Object.assign({}, state, {
       loading: false,
       error: action.error
