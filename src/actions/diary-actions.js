@@ -12,11 +12,10 @@ export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
     }
   })
     .then(response => {
-      console.log(response);
       if (!response.ok) {
         return Promise.reject(response.statusText);
       }
-      console.log(response);
+
       return response.json();
     })
     .then(films => {

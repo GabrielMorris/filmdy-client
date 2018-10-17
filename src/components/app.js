@@ -19,9 +19,12 @@ import FilmDiary from './diary/film-diary/film-diary';
 import SearchContainer from './search/search-container';
 import AuthContainer from './authentication/auth-container';
 import Landing from './landing/landing';
+import Modal from 'react-modal';
 
 // Styles
 import './app.css';
+
+Modal.setAppElement('#root');
 
 class App extends React.Component {
   componentDidUpdate(prevProps) {

@@ -30,7 +30,7 @@ export function diaryReducer(state = initialState, action) {
 
     case FETCH_DIARY_FILMS_SUCCESS: {
       console.log('fetch diary success in reducer');
-      console.log(action);
+
       return Object.assign({}, state, {
         diaryFilms: action.diaryFilms,
         filteredDiaryFilms: action.filteredDiaryFilms
@@ -52,7 +52,7 @@ export function diaryReducer(state = initialState, action) {
 
     case ADD_FILM_SUCCESS: {
       console.log('add success reducer');
-      console.log(action.diaryFilms);
+
       return Object.assign({}, state, {
         diaryFilms: action.diaryFilms,
         filteredDiaryFilms: action.diaryFilms
@@ -61,7 +61,6 @@ export function diaryReducer(state = initialState, action) {
 
     case ADD_FILM_ERROR: {
       console.log('add error reducer');
-      console.log(action);
 
       return Object.assign({}, state, {
         error: action.error
