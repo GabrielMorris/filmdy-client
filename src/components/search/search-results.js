@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 // Components
 import SearchResultCard from './search-result-card/search-result-card';
 import Grid from 'react-css-grid';
+import { BeatLoader } from 'react-spinners';
 
 // Styles
 import './search-results.css';
@@ -35,6 +36,14 @@ export class SearchResults extends React.Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return (
+        <div className="sweet-loading">
+          <BeatLoader loading={this.props.loading} />
+        </div>
+      );
+    }
+
     return (
       <Grid width={320} gap={24}>
         {this.generateFilmResults()}
@@ -48,7 +57,8 @@ const mapStateToProps = state => ({
   searchError: state.search.searchError,
   diaryFilms: state.diary.diaryFilms,
   userID: state.auth.currentUser.id,
-  token: localStorage.getItem('authToken')
+  token: state.auth.authToken,
+  loading: state.search.loading
 });
 
 export default connect(mapStateToProps)(SearchResults);

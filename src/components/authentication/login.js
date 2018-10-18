@@ -23,9 +23,14 @@ export class Login extends React.Component {
   onSubmit(values) {
     const { username, password } = values;
 
-    this.props.dispatch(login(username, password)).catch(error => {
-      this.setState({ loginError: error.errors._error });
-    });
+    this.props
+      .dispatch(login(username, password))
+      .then(() => {
+        setTimeout(() => {}, 1000);
+      })
+      .catch(error => {
+        this.setState({ loginError: error.errors._error });
+      });
   }
 
   handleInputChange(event) {

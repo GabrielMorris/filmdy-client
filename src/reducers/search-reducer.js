@@ -2,14 +2,17 @@
 import {
   SEARCH_FILM_REQUEST,
   SEARCH_FILM_SUCCESS,
-  SEARCH_FILM_ERROR
+  SEARCH_FILM_ERROR,
+  CLEAR_SEARCH_RESULTS_REQUEST,
+  CLEAR_SEARCH_RESULTS_SUCCESS
 } from '../actions/search-actions';
 
 // Initial state
 const initialState = {
   searchResults: [],
   searchTerm: '',
-  searchError: null
+  searchError: null,
+  loading: null
 };
 
 export function searchReducer(state = initialState, action) {
@@ -17,7 +20,9 @@ export function searchReducer(state = initialState, action) {
     case SEARCH_FILM_REQUEST: {
       console.log('search request in reducer');
 
-      return Object.assign({}, state);
+      return Object.assign({}, state, {
+        loading: true
+      });
     }
 
     case SEARCH_FILM_SUCCESS: {
@@ -27,7 +32,8 @@ export function searchReducer(state = initialState, action) {
       return Object.assign({}, state, {
         searchResults: action.searchResults,
         searchTerm: action.searchTerm,
-        searchError: null
+        searchError: null,
+        loading: false
       });
     }
 
@@ -37,6 +43,18 @@ export function searchReducer(state = initialState, action) {
       return Object.assign({}, state, {
         searchError: action.error
       });
+    }
+
+    case CLEAR_SEARCH_RESULTS_REQUEST: {
+      console.log('clearing search results request');
+
+      return Object.assign({}, state);
+    }
+
+    case CLEAR_SEARCH_RESULTS_SUCCESS: {
+      console.log('CLEARING RESULTS');
+
+      return Object.assign({}, state, initialState);
     }
 
     default:

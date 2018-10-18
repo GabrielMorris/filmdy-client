@@ -17,7 +17,8 @@ import {
 const initialState = {
   error: null,
   diaryFilms: [],
-  filteredDiaryFilms: []
+  filteredDiaryFilms: [],
+  loading: false
 };
 
 export function diaryReducer(state = initialState, action) {
@@ -90,14 +91,17 @@ export function diaryReducer(state = initialState, action) {
     case TOGGLE_LIKED_REQUEST: {
       console.log('toggling like request');
 
-      return Object.assign({}, state);
+      return Object.assign({}, state, {
+        loading: true
+      });
     }
 
     case TOGGLE_LIKED_SUCCESS: {
       console.log('toggling like success');
 
       return Object.assign({}, state, {
-        error: null
+        error: null,
+        loading: false
       });
     }
 

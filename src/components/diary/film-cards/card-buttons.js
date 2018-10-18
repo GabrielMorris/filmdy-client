@@ -9,6 +9,8 @@ import {
   toggleFilmLiked
 } from '../../../actions/diary-actions';
 
+import { BeatLoader } from 'react-spinners';
+
 // Components
 
 // Styles
@@ -69,6 +71,7 @@ const mapStateToProps = state => ({
   token: state.auth.authToken,
   showModal: state.modal.showModal,
   modalFilm: state.modal.film
+  // loading: state.diary.loading
 });
 
 export default connect(mapStateToProps)(CardButton);

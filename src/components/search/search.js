@@ -3,7 +3,10 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 
 // Actions
-import { fetchSearchFilms } from '../../actions/search-actions';
+import {
+  fetchSearchFilms,
+  clearSearchResults
+} from '../../actions/search-actions';
 
 // Components
 // Styles
@@ -11,7 +14,7 @@ import './search.css';
 
 export class SearchForm extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchSearchFilms());
+    this.props.dispatch(clearSearchResults());
   }
 
   onSubmit(values) {

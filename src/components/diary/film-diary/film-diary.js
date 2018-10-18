@@ -9,12 +9,14 @@ import FilmDiarySearch from './film-diary-search';
 
 // Actions
 import { fetchDiaryFilms } from '../../../actions/diary-actions';
+import { clearSearchResults } from '../../../actions/search-actions';
 
 // Styles
 
 export class FilmDiary extends React.Component {
   componentDidMount() {
     this.props.dispatch(fetchDiaryFilms(this.props.token, this.props.userID));
+    this.props.dispatch(clearSearchResults());
   }
 
   // Function for generating all the cards
@@ -48,7 +50,7 @@ const mapStateToProps = state => ({
   filteredDiaryFilms: state.diary.filteredDiaryFilms,
   // searchFilms: state.diary.searchFilms,
   userID: state.auth.currentUser.id,
-  token: localStorage.getItem('authToken')
+  token: state.auth.authToken
 });
 
 export default connect(mapStateToProps)(FilmDiary);

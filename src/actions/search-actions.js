@@ -40,6 +40,12 @@ export const fetchSearchFilms = searchTerm => dispatch => {
   }
 };
 
+/* === Clear search results === */
+export const clearSearchResults = () => dispatch => {
+  // dispatch(clearSearchResultsRequest());
+  dispatch(clearSearchResultsSuccess());
+};
+
 // Sync
 export const SEARCH_FILM_REQUEST = 'SEARCH_FILM_REQUEST';
 export const searchFilmRequest = () => ({
@@ -57,4 +63,14 @@ export const SEARCH_FILM_ERROR = 'SEARCH_FILM_ERROR';
 export const searchFilmError = error => ({
   type: SEARCH_FILM_ERROR,
   error
+});
+
+export const CLEAR_SEARCH_RESULTS_REQUEST = 'CLEAR_SEARCH_RESULTS_REQUEST';
+export const clearSearchResultsRequest = () => ({
+  type: CLEAR_SEARCH_RESULTS_REQUEST
+});
+
+export const CLEAR_SEARCH_RESULTS_SUCCESS = 'CLEAR_SEARCH_RESULTS_SUCCESS';
+export const clearSearchResultsSuccess = () => ({
+  type: CLEAR_SEARCH_RESULTS_SUCCESS
 });

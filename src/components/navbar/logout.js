@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 // Actions
 import { clearAuth } from '../../actions/auth';
 
+import { clearAuthToken } from '../../local-storage';
+
 // Components
 // Styles
 
@@ -14,6 +16,7 @@ function Logout(props) {
       onClick={event => {
         console.log('logout clicked');
         props.dispatch(clearAuth());
+        clearAuthToken();
       }}
     >
       Logout

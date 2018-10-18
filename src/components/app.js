@@ -33,7 +33,7 @@ class App extends React.Component {
     const authToken = loadAuthToken();
 
     if (authToken) {
-      console.log('authtoken in  local storage');
+      console.log('authtoken in local storage');
       storeAuthInfo(authToken, this.props.dispatch);
     }
   }
