@@ -14,31 +14,43 @@ const initialState = {
 };
 
 export function authReducer(state = initialState, action) {
-  if (action.type === SET_AUTH_TOKEN) {
-    return Object.assign({}, state, {
-      authToken: action.authToken
-    });
-  } else if (action.type === CLEAR_AUTH) {
-    return Object.assign({}, state, {
-      authToken: null,
-      currentUser: null
-    });
-  } else if (action.type === AUTH_REQUEST) {
-    return Object.assign({}, state, {
-      loading: true,
-      error: null
-    });
-  } else if (action.type === AUTH_SUCCESS) {
-    return Object.assign({}, state, {
-      loading: false,
-      currentUser: action.currentUser
-    });
-  } else if (action.type === AUTH_ERROR) {
-    console.log('hello');
-    return Object.assign({}, state, {
-      loading: false,
-      error: action.error
-    });
+  switch (action.type) {
+    case SET_AUTH_TOKEN: {
+      return Object.assign({}, state, {
+        authToken: action.authToken
+      });
+    }
+
+    case CLEAR_AUTH: {
+      return Object.assign({}, state, {
+        authToken: null,
+        currentUser: null
+      });
+    }
+
+    case AUTH_REQUEST: {
+      return Object.assign({}, state, {
+        loading: true,
+        error: null
+      });
+    }
+
+    case AUTH_SUCCESS: {
+      return Object.assign({}, state, {
+        loading: false,
+        currentUser: action.currentUser
+      });
+    }
+
+    case AUTH_ERROR: {
+      console.log('hello');
+      return Object.assign({}, state, {
+        loading: false,
+        error: action.error
+      });
+    }
+
+    default:
+      return state;
   }
-  return state;
 }

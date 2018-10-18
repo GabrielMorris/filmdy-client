@@ -31,7 +31,7 @@ export class SearchForm extends React.Component {
           <Field
             name="searchInput"
             type="text"
-            placeholder="Lord of the Rings"
+            placeholder="Find films!"
             component="input"
           />
 

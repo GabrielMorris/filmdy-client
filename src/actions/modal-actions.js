@@ -1,11 +1,12 @@
 import { API_KEY } from '../config';
 const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
+const FULL_PLOT = '&plot=full';
 
 export const toggleModal = (bool, imdbID = '') => dispatch => {
   dispatch(toggleModalRequest());
 
   if (imdbID !== '') {
-    return fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
+    return fetch(`${FILM_BY_ID_URI}${imdbID}${FULL_PLOT}${API_KEY}`)
       .then(response => response.json())
       .then(film => {
         console.log(film);

@@ -71,7 +71,10 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <Navbar />
+          <header>
+            <Navbar />
+          </header>
+
           <main>
             <Switch>
               {/* Diary route */}

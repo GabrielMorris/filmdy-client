@@ -31,11 +31,14 @@ export class DiarySearchForm extends React.Component {
           <Field
             name="searchInput"
             type="text"
-            placeholder="Harry Potter"
+            placeholder="Filter your films"
             component="input"
           />
 
           <button
+            style={{
+              display: 'inline-block'
+            }}
             onClick={values => {
               this.props.dispatch(
                 fetchDiaryFilms(

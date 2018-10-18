@@ -24,13 +24,17 @@ export function Navbar(props) {
 function generateNavbarLinks(props) {
   if (props.userSignedIn) {
     return (
-      <div>
+      <nav>
         <Link to="/">Diary</Link>
         <Link to="/search">Search</Link>
-      </div>
+      </nav>
     );
   }
-  return <Link to="/login">Login</Link>;
+  return (
+    <nav>
+      <Link to="/login">Login</Link>
+    </nav>
+  );
 }
 
 const mapStateToProps = state => ({
