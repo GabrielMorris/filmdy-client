@@ -3,7 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requireAuth from './authentication/require-auth';
 
-import { refreshAuthToken } from '../actions/auth';
+import { refreshAuthToken, storeAuthInfo } from '../actions/auth';
+import { loadAuthToken } from '../local-storage';
 
 // React router
 import {
@@ -27,6 +28,15 @@ import './app.css';
 Modal.setAppElement('#root');
 
 class App extends React.Component {
+  componentDidMount() {
+    const authToken = loadAuthToken();
+
+    if (authToken) {
+      console.log('authtoken in  local storage');
+      storeAuthInfo(authToken, this.props.dispatch);
+    }
+  }
+
   componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
       // When we are logged in, refresh the auth token periodically
