@@ -21,6 +21,7 @@ import SearchContainer from './search/search-container';
 import AuthContainer from './authentication/auth-container';
 import Landing from './landing/landing';
 import Modal from 'react-modal';
+import NoMatch from './no-match';
 
 // Styles
 import './app.css';
@@ -72,26 +73,33 @@ class App extends React.Component {
         <div>
           <Navbar />
           <main>
-            {/* Diary route */}
-            <Route
-              exact
-              path="/"
-              component={props.userSignedIn ? requireAuth(FilmDiary) : Landing}
-            />
+            <Switch>
+              {/* Diary route */}
+              <Route
+                path="/"
+                exact
+                component={
+                  props.userSignedIn ? requireAuth(FilmDiary) : Landing
+                }
+              />
 
-            {/* Search route */}
-            <Route
-              exact
-              path="/search"
-              component={
-                props.userSignedIn
-                  ? requireAuth(SearchContainer)
-                  : AuthContainer
-              }
-            />
+              {/* Search route */}
+              <Route
+                path="/search"
+                exact
+                component={
+                  props.userSignedIn
+                    ? requireAuth(SearchContainer)
+                    : AuthContainer
+                }
+              />
 
-            {/* Login/signup route */}
-            <Route exact path="/login" component={AuthContainer} />
+              {/* Login/signup route */}
+              <Route path="/login" exact component={AuthContainer} />
+
+              {/* 404 handling */}
+              <Route component={NoMatch} />
+            </Switch>
           </main>
         </div>
       </Router>
