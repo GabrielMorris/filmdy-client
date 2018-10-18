@@ -20,3 +20,8 @@ header {
 header h1 {
   margin: 0;
 }
+
+a {
+  color: #fff;
+  text-decoration-line: none;
+}

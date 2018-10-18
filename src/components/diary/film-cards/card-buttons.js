@@ -9,8 +9,6 @@ import {
   toggleFilmLiked
 } from '../../../actions/diary-actions';
 
-import { BeatLoader } from 'react-spinners';
-
 // Components
 
 // Styles
@@ -27,12 +25,24 @@ class CardButton extends React.Component {
   generateLikeButtons(props) {
     // Like
     if (!props.rating) {
-      return <button onClick={() => this.toggleFilmLikedStatus()}>Like</button>;
+      return (
+        <button
+          className="like-button"
+          onClick={() => this.toggleFilmLikedStatus()}
+        >
+          Like
+        </button>
+      );
     }
 
     // Dislike
     return (
-      <button onClick={() => this.toggleFilmLikedStatus()}>Dislike</button>
+      <button
+        className="dislike-button"
+        onClick={() => this.toggleFilmLikedStatus()}
+      >
+        Dislike
+      </button>
     );
   }
 
@@ -71,7 +81,6 @@ const mapStateToProps = state => ({
   token: state.auth.authToken,
   showModal: state.modal.showModal,
   modalFilm: state.modal.film
-  // loading: state.diary.loading
 });
 
 export default connect(mapStateToProps)(CardButton);

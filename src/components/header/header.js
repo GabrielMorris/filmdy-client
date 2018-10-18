@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Components
 
@@ -10,7 +11,9 @@ import './header.css';
 export function Navbar(props) {
   return (
     <header>
-      <h1>Filmdy</h1>
+      <Link to="/">
+        <h1>Filmdy</h1>
+      </Link>
     </header>
   );
 }

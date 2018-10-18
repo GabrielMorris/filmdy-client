@@ -30,7 +30,7 @@ body {
 
 /* Change color on hover */
 .bm-item:hover {
-  color: green;
+  color: rgb(88, 86, 214);
 }
 
 /* The rest copied directly from react-burger-menu docs */
