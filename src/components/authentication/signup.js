@@ -74,16 +74,18 @@ class Signup extends React.Component {
         <Field
           name="signupUsername"
           type="text"
-          component={Input}
+          placeholder="Username"
           label="Username"
+          component={Input}
           validate={[required, nonEmpty, usernameLength]}
         />
 
         <Field
           name="signupPassword"
           type="password"
-          component={Input}
+          placeholder="Password"
           label="Password"
+          component={Input}
           validate={[required, nonEmpty, passwordLength]}
         />
 

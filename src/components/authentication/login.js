@@ -79,16 +79,18 @@ export class Login extends React.Component {
         <Field
           name="loginUsername"
           type="text"
-          component={Input}
+          placeholder="Username"
           label="Username"
+          component={Input}
           validate={[required, nonEmpty]}
         />
 
         <Field
           name="loginPassword"
           type="password"
-          component={Input}
+          placeholder="Password"
           label="Password"
+          component={Input}
           validate={[required, nonEmpty]}
         />
 

@@ -1,4 +1,4 @@
-nav {
+header {
   /* Colors */
   background-color: #1b1b1b;
   color: #ffffff;
@@ -13,7 +13,7 @@ nav {
   text-align: center;
 }
 
-nav h1 {
+header h1 {
   margin: 0;
 }
 

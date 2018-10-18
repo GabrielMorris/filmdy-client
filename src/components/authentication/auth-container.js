@@ -15,9 +15,18 @@ export function AuthContainer(props) {
     console.log('we here');
     return <Redirect to="/" />;
   }
+
+  console.log(props.match.path);
+  if (props.match.path === '/login') {
+    return (
+      <div>
+        <Login />
+      </div>
+    );
+  }
+
   return (
     <div>
-      <Login />
       <Signup />
     </div>
   );

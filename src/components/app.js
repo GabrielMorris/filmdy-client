@@ -3,25 +3,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import requireAuth from './authentication/require-auth';
 
-import { refreshAuthToken, storeAuthInfo } from '../actions/auth';
-import { loadAuthToken } from '../local-storage';
+// Actions
+import { refreshAuthToken, storeAuthInfo, clearAuth } from '../actions/auth';
+import { loadAuthToken, clearAuthToken } from '../local-storage';
+import { action as toggleMenu } from 'redux-burger-menu';
 
 // React router
 import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Switch
+  Switch,
+  Link
 } from 'react-router-dom';
 
 // Components
-import Navbar from '../components/navbar/navbar';
+import Header from './header/header';
 import FilmDiary from './diary/film-diary/film-diary';
 import SearchContainer from './search/search-container';
 import AuthContainer from './authentication/auth-container';
 import Landing from './landing/landing';
 import Modal from 'react-modal';
 import NoMatch from './no-match';
+
+import Menu from './header/menu/menu';
 
 // Styles
 import './app.css';
@@ -67,15 +72,84 @@ class App extends React.Component {
     clearInterval(this.refreshInterval);
   }
 
+  dispatchMenuToggle() {
+    this.props.dispatch(toggleMenu());
+  }
+
+  generateMenu() {
+    if (this.props.userSignedIn) {
+      return (
+        <Menu>
+          <Link
+            to="/"
+            className="menu-item"
+            onClick={() => this.dispatchMenuToggle()}
+          >
+            Diary
+          </Link>
+
+          <Link
+            to="/search"
+            className="menu-item"
+            onClick={() => this.dispatchMenuToggle()}
+          >
+            Search
+          </Link>
+
+          <Link
+            to="/"
+            className="menu-item"
+            onClick={event => {
+              console.log('loguout clicked');
+              this.props.dispatch(clearAuth());
+              clearAuthToken();
+              this.dispatchMenuToggle();
+            }}
+          >
+            Logout
+          </Link>
+        </Menu>
+      );
+    }
+    return (
+      <Menu>
+        <Link
+          to="/"
+          className="menu-item"
+          onClick={() => this.dispatchMenuToggle()}
+        >
+          Home
+        </Link>
+        <Link
+          to="/login"
+          className="menu-item"
+          onClick={() => this.dispatchMenuToggle()}
+        >
+          Login
+        </Link>
+        <Link
+          to="/signup"
+          className="menu-item"
+          onClick={() => this.dispatchMenuToggle()}
+        >
+          Signup
+        </Link>
+      </Menu>
+    );
+  }
+
   appComponentBuilder(props) {
     return (
       <Router>
         <div>
-          <header>
-            <Navbar />
-          </header>
+          {/* Menu */}
+          {this.generateMenu()}
 
-          <main>
+          {/* Header */}
+          <Header />
+
+          {/* Main */}
+          <main id="page-wrap">
             <Switch>
               {/* Diary route */}
               <Route
@@ -97,8 +171,11 @@ class App extends React.Component {
                 }
               />
 
-              {/* Login/signup route */}
+              {/* Login route */}
               <Route path="/login" exact component={AuthContainer} />
+
+              {/* Signup route */}
+              <Route path="/signup" exact component={AuthContainer} />
 
               {/* 404 handling */}
               <Route component={NoMatch} />

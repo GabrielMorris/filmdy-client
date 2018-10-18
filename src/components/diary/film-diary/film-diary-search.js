@@ -24,7 +24,10 @@ export class DiarySearchForm extends React.Component {
       <section>
         <form
           className="search-form"
-          onSubmit={event => event.preventDefault()}
+          onSubmit={event => {
+            event.preventDefault();
+            console.log('hello');
+          }}
           onChange={this.props.handleSubmit(values => this.onChange(values))}
         >
           <label htmlFor="searchInput">Filter: </label>
