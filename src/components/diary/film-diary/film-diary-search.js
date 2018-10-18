@@ -5,7 +5,6 @@ import { reduxForm, Field } from 'redux-form';
 // Actions
 import { fetchDiaryFilms } from '../../../actions/diary-actions';
 
-// Components
 // Styles
 
 export class DiarySearchForm extends React.Component {

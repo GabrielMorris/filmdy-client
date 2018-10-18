@@ -11,6 +11,9 @@ import {
   passwordLength
 } from './validators';
 
+// Styles
+import './auth.css';
+
 class Signup extends React.Component {
   constructor(props) {
     super(props);
@@ -61,10 +64,11 @@ class Signup extends React.Component {
 
     return (
       <form
+        className="auth-form"
         onChange={event => this.handleInputChange(event)}
         onSubmit={event => this.onSubmit(event)}
       >
-        <h2>Signup</h2>
+        <h1>Signup</h1>
         {successMessage}
         <span style={{ color: 'darkred' }}>
           {errorMessage}

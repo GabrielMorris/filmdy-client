@@ -13,10 +13,10 @@ export default function Landing(props) {
   return (
     <div className="landing">
       <LazyHero
-        color="#008276"
+        imageSrc="https://i.imgur.com/unKRyIA.jpg"
         minHeight="40vh"
         className="landing-hero"
-        opacity="1"
+        opacity="0"
         style={{
           color: '#ffffff'
         }}
@@ -28,11 +28,11 @@ export default function Landing(props) {
         </h3>
 
         <Link to="/login">
-          <button>Login</button>
+          <button className="hero-button">Login</button>
         </Link>
 
         <Link to="/signup">
-          <button>Signup</button>
+          <button className="hero-button">Signup</button>
         </Link>
       </LazyHero>
 

@@ -9,6 +9,8 @@ import {
 } from '../../actions/search-actions';
 
 // Components
+import LazyHero from 'react-lazy-hero';
+
 // Styles
 import './search.css';
 
@@ -26,6 +28,20 @@ export class SearchForm extends React.Component {
   render() {
     return (
       <section>
+        <LazyHero
+          color="#546e7a"
+          className="diary-hero"
+          minHeight="5vh"
+          opacity="1"
+          style={{
+            color: '#ffffff'
+          }}
+        >
+          <div className="hero-path">
+            <h1 style={{ 'font-size': '32px' }}>Search films</h1>
+          </div>
+        </LazyHero>
+
         <form
           className="search-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}

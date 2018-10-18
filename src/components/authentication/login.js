@@ -8,6 +8,7 @@ import { required, nonEmpty } from './validators';
 
 // Components
 // Styles
+import './auth.css';
 
 export class Login extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ export class Login extends React.Component {
 
     return (
       <form
+        className="auth-form"
         onChange={event => this.handleInputChange(event)}
         onSubmit={event => {
           event.preventDefault();
@@ -69,32 +71,34 @@ export class Login extends React.Component {
           this.onSubmit(userObject);
         }}
       >
-        <h2>Login</h2>
-        {successMessage}
-        <span style={{ color: 'darkred' }}>
-          {errorMessage}
-          {this.state.loginError}
-        </span>
+        <div>
+          <h1>Login</h1>
+          {successMessage}
+          <span style={{ color: 'darkred' }}>
+            {errorMessage}
+            {this.state.loginError}
+          </span>
 
-        <Field
-          name="loginUsername"
-          type="text"
-          placeholder="Username"
-          label="Username"
-          component={Input}
-          validate={[required, nonEmpty]}
-        />
+          <Field
+            name="loginUsername"
+            type="text"
+            placeholder="Username"
+            label="Username"
+            component={Input}
+            validate={[required, nonEmpty]}
+          />
 
-        <Field
-          name="loginPassword"
-          type="password"
-          placeholder="Password"
-          label="Password"
-          component={Input}
-          validate={[required, nonEmpty]}
-        />
+          <Field
+            name="loginPassword"
+            type="password"
+            placeholder="Password"
+            label="Password"
+            component={Input}
+            validate={[required, nonEmpty]}
+          />
 
-        <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     );
   }

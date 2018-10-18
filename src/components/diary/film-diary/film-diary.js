@@ -6,12 +6,14 @@ import { connect } from 'react-redux';
 import Card from '../film-cards/card';
 import Grid from 'react-css-grid';
 import FilmDiarySearch from './film-diary-search';
+import LazyHero from 'react-lazy-hero';
 
 // Actions
 import { fetchDiaryFilms } from '../../../actions/diary-actions';
 import { clearSearchResults } from '../../../actions/search-actions';
 
 // Styles
+import './film-diary.css';
 
 export class FilmDiary extends React.Component {
   componentDidMount() {
@@ -33,9 +35,22 @@ export class FilmDiary extends React.Component {
   render() {
     return (
       <div>
-        <h1>Your film diary</h1>
+        <LazyHero
+          color="#546e7a"
+          className="diary-hero"
+          minHeight="5vh"
+          opacity="1"
+          style={{
+            color: '#ffffff'
+          }}
+        >
+          <div className="hero-path">
+            <h1>Diary</h1>
+          </div>
+        </LazyHero>
 
         <FilmDiarySearch userID={this.props.userID} token={this.props.token} />
+
         <Grid width={384} gap={16}>
           {this.generateFilmCards()}
         </Grid>
