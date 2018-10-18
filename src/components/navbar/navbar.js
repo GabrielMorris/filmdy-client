@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // Components
+import Logout from './logout';
+
 // Styles
 import './navbar.css';
 
@@ -27,6 +29,7 @@ function generateNavbarLinks(props) {
       <nav>
         <Link to="/">Diary</Link>
         <Link to="/search">Search</Link>
+        <Logout />
       </nav>
     );
   }

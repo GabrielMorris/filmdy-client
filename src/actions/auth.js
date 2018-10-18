@@ -113,6 +113,10 @@ export const signup = (username, password) => dispatch => {
     .catch(err => console.error(err));
 };
 
+export const logout = () => dispatch => {
+  dispatch(clearAuth());
+};
+
 export const refreshAuthToken = () => (dispatch, getState) => {
   dispatch(authRequest());
   const authToken = getState().auth.authToken;
