@@ -64,16 +64,13 @@ export const login = (username, password) => dispatch => {
       // Reject any requests which don't return a 200 status, creating
       // errors which follow a consistent format
       .then(res => {
-        console.log(1);
         console.log(res);
         return normalizeResponseErrors(res);
       })
       .then(res => {
-        console.log(2);
         return res.json();
       })
       .then(({ authToken }) => {
-        console.log(3);
         console.log(authToken);
         storeAuthInfo(authToken, dispatch);
       })
@@ -82,8 +79,8 @@ export const login = (username, password) => dispatch => {
         const { code } = err;
         const message =
           code === 401
-            ? 'Incorrect username or password'
-            : 'Unable to login, please try again';
+            ? 'Unable to login, please try again'
+            : 'Incorrect username or password';
         dispatch(authError(err));
         // Could not authenticate, so return a SubmissionError for Redux
         // Form
@@ -94,6 +91,26 @@ export const login = (username, password) => dispatch => {
         );
       })
   );
+};
+
+export const signup = (username, password) => dispatch => {
+  dispatch(authRequest());
+  console.log(
+    JSON.stringify({
+      username,
+      password
+    })
+  );
+
+  return fetch('http://localhost:8080/api/users', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify({ username, password })
+  })
+    .then(response => response.json())
+    .catch(err => console.error(err));
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {

@@ -24,7 +24,6 @@ export class Login extends React.Component {
     const { username, password } = values;
 
     this.props.dispatch(login(username, password)).catch(error => {
-      console.log(error);
       this.setState({ loginError: error.errors._error });
     });
   }
@@ -37,8 +36,6 @@ export class Login extends React.Component {
     this.setState({
       [name]: value
     });
-
-    console.log(this.state);
   }
 
   render() {

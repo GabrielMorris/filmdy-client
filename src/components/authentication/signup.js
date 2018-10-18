@@ -1,17 +1,39 @@
 // React
 import React from 'react';
+import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
 
-// Components
-// Styles
+import { login, signup } from '../../actions/auth';
+import Input from './Input';
+import {
+  required,
+  nonEmpty,
+  usernameLength,
+  passwordLength
+} from './validators';
 
-export default class Signup extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      signupUsername: '',
-      signupPassword: ''
+      signupError: ''
     };
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    console.log('signup submitted');
+
+    this.props
+      .dispatch(signup(this.state.signupUsername, this.state.signupPassword))
+      .then(() =>
+        this.props.dispatch(
+          login(this.state.signupUsername, this.state.signupPassword)
+        )
+      )
+      .catch(error => {
+        this.setState({ signupError: error.errors._error });
+      });
   }
 
   handleInputChange(event) {
@@ -25,40 +47,55 @@ export default class Signup extends React.Component {
   }
 
   render() {
+    let successMessage;
+
+    if (this.props.submitSucceeded) {
+      successMessage = <div>Logging you in!</div>;
+    }
+
+    let errorMessage;
+
+    if (this.props.error) {
+      errorMessage = <div>{this.props.error}</div>;
+    }
+
     return (
       <form
         onChange={event => this.handleInputChange(event)}
-        onSubmit={event => {
-          event.preventDefault();
-          console.log('signup submitted');
-
-          const newUserObject = {
-            username: this.state.signupUsername,
-            password: this.state.signupPassword
-          };
-
-          // TODO: here we will eventually need to get the JWT and get that added to the store
-          return fetch('http://localhost:8080/api/users', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json; charset=utf-8'
-            },
-            body: JSON.stringify(newUserObject)
-          })
-            .then(response => response.json())
-            .catch(err => console.error(err));
-        }}
+        onSubmit={event => this.onSubmit(event)}
       >
         <h2>Signup</h2>
+        {successMessage}
+        <span style={{ color: 'darkred' }}>
+          {errorMessage}
+          {this.state.signupError}
+        </span>
 
-        <label htmlFor="signupUsername">Username</label>
-        <input type="text" name="signupUsername" />
+        <Field
+          name="signupUsername"
+          type="text"
+          component={Input}
+          label="Username"
+          validate={[required, nonEmpty, usernameLength]}
+        />
 
-        <label htmlFor="signupPassword">Password</label>
-        <input type="password" name="signupPassword" />
+        <Field
+          name="signupPassword"
+          type="password"
+          component={Input}
+          label="Password"
+          validate={[required, nonEmpty, passwordLength]}
+        />
 
         <button type="submit">Submit</button>
       </form>
     );
   }
 }
+
+export default reduxForm({
+  form: 'signup',
+  onSubmitFail: (errors, dispatch) => {
+    dispatch(focus('signup', Object.keys(errors)[0]));
+  }
+})(Signup);
