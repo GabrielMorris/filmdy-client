@@ -67,14 +67,14 @@ class Card extends React.Component {
         </div>
 
         {/* Row */}
-        {/* <div className="row"> */}
-        {/* Unwatch */}
-        {/* <CardButtons
+        <div className="row">
+          {/* Unwatch */}
+          <CardButtons
             film={this.props.film}
             history={this.props.history}
             rating={this.props.film.userRating}
           />
-        </div> */}
+        </div>
       </li>
     );
   }

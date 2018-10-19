@@ -2,9 +2,6 @@ header {
   /* Colors */
   background-color: #263238;
   color: #ffffff;
-
-  /* TODO: figure out why this doesnt work */
-  /* box-shadow: 45px 45px 1px rgba(0, 0, 0, 1); */
   border-bottom: 2px solid rgba(0, 0, 0, 0.2);
 
   /* Padding */

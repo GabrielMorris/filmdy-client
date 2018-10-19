@@ -36,33 +36,21 @@ export default function Landing(props) {
         </Link>
       </LazyHero>
 
-      <Grid width={320} gap={32} className="landing-card-grid">
+      <Grid width={284} gap={16} className="landing-card-grid">
         {/* Card */}
         <div className="landing-card">
           {/* Header */}
           <div className="landing-card-header">
-            <h2>Card title</h2>
+            <h1>🔍 Search</h1>
+            <hr />
           </div>
 
-          {/* Row */}
-          <div className="row">
-            {/* Image column */}
-            <div className="image-column">
-              <img
-                src="https://via.placeholder.com/300x445"
-                className="card-poster"
-              />
-            </div>
-
-            {/* Body column */}
-            <div className="column">
-              <p>
-                Blood black nothingness began to spin, a system of cells
-                interlinked within cells interlinked within cells interlinked,
-                and dreadfully distinct against the dark a tall white fountain
-                played
-              </p>
-            </div>
+          <div>
+            <p className="landing-card-text">
+              Search millions of movies and find your next cinema experience.
+              Whether it's a summer blockbuster or an indie gem we have what
+              you're looking for.
+            </p>
           </div>
         </div>
 
@@ -70,28 +58,15 @@ export default function Landing(props) {
         <div className="landing-card">
           {/* Header */}
           <div className="landing-card-header">
-            <h2>Card title</h2>
+            <h1>🍿 Watch</h1>
+            <hr />
           </div>
 
-          {/* Row */}
-          <div className="row">
-            {/* Image column */}
-            <div className="image-column">
-              <img
-                src="https://via.placeholder.com/300x445"
-                className="card-poster"
-              />
-            </div>
-
-            {/* Body column */}
-            <div className="column">
-              <p>
-                Blood black nothingness began to spin, a system of cells
-                interlinked within cells interlinked within cells interlinked,
-                and dreadfully distinct against the dark a tall white fountain
-                played
-              </p>
-            </div>
+          <div>
+            <p className="landing-card-text">
+              Once you've found your next film sit back with a bag of popcorn,
+              turn down the lights, and enjoy the show!
+            </p>
           </div>
         </div>
 
@@ -99,57 +74,16 @@ export default function Landing(props) {
         <div className="landing-card">
           {/* Header */}
           <div className="landing-card-header">
-            <h2>Card title</h2>
+            <h1>👍 Rate</h1>
+            <hr />
           </div>
 
-          {/* Row */}
-          <div className="row">
-            {/* Image column */}
-            <div className="image-column">
-              <img
-                src="https://via.placeholder.com/300x445"
-                className="card-poster"
-              />
-            </div>
-
-            {/* Body column */}
-            <div className="column">
-              <p>
-                Blood black nothingness began to spin, a system of cells
-                interlinked within cells interlinked within cells interlinked,
-                and dreadfully distinct against the dark a tall white fountain
-                played
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Card */}
-        <div className="landing-card">
-          {/* Header */}
-          <div className="landing-card-header">
-            <h2>Card title</h2>
-          </div>
-
-          {/* Row */}
-          <div className="row">
-            {/* Image column */}
-            <div className="image-column">
-              <img
-                src="https://via.placeholder.com/300x445"
-                className="card-poster"
-              />
-            </div>
-
-            {/* Body column */}
-            <div className="column">
-              <p>
-                Blood black nothingness began to spin, a system of cells
-                interlinked within cells interlinked within cells interlinked,
-                and dreadfully distinct against the dark a tall white fountain
-                played
-              </p>
-            </div>
+          <div>
+            <p className="landing-card-text">
+              After you've finished the film come back and add it to your Filmdy
+              Diary, we'll keep track of it and all the other movies you've
+              watched. Don't forget to give it a rating!
+            </p>
           </div>
         </div>
       </Grid>
