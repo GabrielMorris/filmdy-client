@@ -33,7 +33,7 @@ export class DiarySearchForm extends React.Component {
           <Field
             name="searchInput"
             type="text"
-            placeholder="Filter your films"
+            placeholder="Filter films"
             component="input"
           />
 

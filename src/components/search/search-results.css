@@ -13,3 +13,17 @@ li {
 .sweet-loading {
   text-align: center;
 }
+
+.search-results-grid {
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (max-width: 480px) {
+  .search-results-grid {
+    width: 100%;
+    grid-gap: 6px;
+    grid-template-columns: repeat(auto-fit, minmax(312px, 1fr));
+  }
+}

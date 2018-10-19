@@ -38,7 +38,7 @@ export class FilmDiary extends React.Component {
         <LazyHero
           color="#546e7a"
           className="diary-hero"
-          minHeight="5vh"
+          minHeight="7vh"
           opacity="1"
           style={{
             color: '#ffffff'
@@ -51,9 +51,11 @@ export class FilmDiary extends React.Component {
 
         <FilmDiarySearch userID={this.props.userID} token={this.props.token} />
 
-        <Grid width={384} gap={16} className="diary-grid">
-          {this.generateFilmCards()}
-        </Grid>
+        <ul>
+          <Grid width={384} gap={16} className="diary-grid">
+            {this.generateFilmCards()}
+          </Grid>
+        </ul>
       </div>
     );
   }

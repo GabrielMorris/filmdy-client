@@ -31,7 +31,7 @@ export class SearchForm extends React.Component {
         <LazyHero
           color="#546e7a"
           className="diary-hero"
-          minHeight="5vh"
+          minHeight="7vh"
           opacity="1"
           style={{
             color: '#ffffff'

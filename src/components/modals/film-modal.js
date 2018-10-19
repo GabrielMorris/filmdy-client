@@ -31,7 +31,12 @@ class FilmModal extends React.Component {
         className="Modal"
         overlayClassName="Overlay"
       >
-        <button onClick={this.handleCloseModal}>Close Modal</button>
+        <button
+          onClick={this.handleCloseModal}
+          style={{ display: 'block', marginLeft: 'auto' }}
+        >
+          Close
+        </button>
 
         <div className="film-modal-information">
           <div className="film-modal-poster">

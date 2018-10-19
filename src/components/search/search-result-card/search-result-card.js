@@ -45,11 +45,6 @@ class SearchResultCard extends React.Component {
 
         {/* Row */}
         <div className="row">
-          {/* Poster */}
-          <div className="search-image-column">
-            <SearchResultCardPoster poster={this.props.film.Poster} />
-          </div>
-
           {/* Header */}
           <div className="search-column">
             <SearchResultCardBody
@@ -58,6 +53,11 @@ class SearchResultCard extends React.Component {
               history={this.props.history}
               onClick={this.handleOpenModal}
             />
+          </div>
+
+          {/* Poster */}
+          <div className="search-image-column">
+            <SearchResultCardPoster poster={this.props.film.Poster} />
           </div>
         </div>
       </div>

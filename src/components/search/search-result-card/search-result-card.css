@@ -16,12 +16,13 @@
 .search-image-column {
   flex: 10%;
   padding: 5px 0 5px 5px;
+  padding-right: 1rem;
   vertical-align: middle;
 }
 
 .search-column {
   flex: 90%;
-  padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 @media only screen and (max-width: 480px) {
@@ -29,15 +30,20 @@
     display: block;
   }
 
-  .image-column {
+  .search-image-column {
     text-align: center;
     /* flex: 10%; */
     padding: 5px;
     /* vertical-align: middle; */
+    display: block;
+    padding-right: 0rem;
   }
 
-  .column {
+  .search-column {
     /* flex: 90%; */
-    padding-right: 1rem;
+    padding-right: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

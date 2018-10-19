@@ -4,6 +4,8 @@
 
   /* Margin */
   margin: 0.5rem;
+
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.31);
 }
 
 .row {
@@ -42,5 +44,6 @@
   .column {
     /* flex: 90%; */
     /* padding-right: 1rem; */
+    padding: 1rem;
   }
 }

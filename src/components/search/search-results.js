@@ -45,9 +45,11 @@ export class SearchResults extends React.Component {
     }
 
     return (
-      <Grid width={512} gap={8}>
-        {this.generateFilmResults()}
-      </Grid>
+      <ul>
+        <Grid width={512} gap={8} className="search-results-grid">
+          {this.generateFilmResults()}
+        </Grid>
+      </ul>
     );
   }
 }
