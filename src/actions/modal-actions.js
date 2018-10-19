@@ -14,7 +14,7 @@ export const toggleModal = (bool, imdbID = '') => dispatch => {
       })
       .catch(error => toggleModalError(error));
   } else {
-    dispatch(toggleModalSuccess(false, '', {}));
+    dispatch(toggleModalSuccess(false, '', { Ratings: [] }));
   }
 };
 

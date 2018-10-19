@@ -7,6 +7,7 @@ import { toggleModal } from '../../actions/modal-actions';
 
 // Components
 import ReactModal from 'react-modal';
+import CardCritics from '../diary/film-cards/card-critics';
 
 // Styles
 import './film-modal.css';
@@ -38,47 +39,61 @@ class FilmModal extends React.Component {
           Close
         </button>
 
-        <div className="film-modal-information">
-          <div className="film-modal-poster">
+        <div className="film-modal-information row">
+          <div className="film-modal-poster modal-poster-column">
             <img src={this.props.modalFilm.Poster} alt="Film poster" />
           </div>
 
-          <div className="film-modal-details">
+          <div className="film-modal-details modal-column">
             <ul>
               {/* Title */}
               <li>
                 <strong>Title: </strong>
                 {this.props.modalFilm.Title}
               </li>
+
+              {/* Year */}
               <li>
-                {/* Year */}
                 <strong>Released: </strong>
                 {this.props.modalFilm.Released}
               </li>
+
+              {/* Genre */}
               <li>
-                {/* Genre */}
                 <strong>Genre(s): </strong>
                 {this.props.modalFilm.Genre}
               </li>
+
+              {/* Director */}
               <li>
-                {/* Director */}
                 <strong>Director: </strong>
                 {this.props.modalFilm.Director}
               </li>
+
+              {/* Actors */}
               <li>
-                {/* Actors */}
                 <strong>Actors: </strong>
                 {this.props.modalFilm.Actors}
               </li>
+
+              {/* Runtime */}
               <li>
-                {/* Runtime */}
                 <strong>Runetime: </strong>
                 {this.props.modalFilm.Runtime}
               </li>
+
+              {/* Plot */}
               <li>
-                {/* Plot */}
                 <strong>Plot: </strong>
                 {this.props.modalFilm.Plot}
+              </li>
+
+              {/* Critics */}
+              <li className="modal-critics">
+                <strong>Ratings: </strong>
+                <ul>
+                  <CardCritics criticalRatings={this.props.modalFilm.Ratings} />
+                </ul>
               </li>
             </ul>
           </div>

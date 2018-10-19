@@ -7,7 +7,7 @@ import {
 const initialState = {
   showModal: false,
   imdbID: '',
-  film: {}
+  film: { Ratings: [] }
 };
 
 export function modalReducer(state = initialState, action) {
@@ -20,6 +20,7 @@ export function modalReducer(state = initialState, action) {
     case TOGGLE_MODAL_SUCCESS: {
       const invertedShowModal = action.bool;
 
+      console.log(action);
       return Object.assign({}, state, {
         showModal: invertedShowModal,
         imdbID: action.imdbID,

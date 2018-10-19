@@ -28,8 +28,56 @@
   background-color: rgba(0, 0, 0, 0.3);
 }
 
+.row {
+  display: flex;
+}
+
+.modal-poster-column {
+  flex: 20%;
+}
+
+.modal-poster-column img {
+  height: 350px;
+}
+
+.modal-column {
+  flex: 80%;
+  margin-left: 1rem;
+}
+
+.modal-critics {
+  margin-top: 1rem;
+}
+
 @media only screen and (max-width: 900px) {
   .Modal {
     margin-right: -50%;
   }
 }
+
+@media only screen and (max-width: 550px) {
+  .row {
+    display: block;
+  }
+
+  .modal-poster-column img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+}
+
+/* .row {
+  display: flex;
+}
+
+.image-column {
+  flex: 33.33%;
+  padding: 0 5px 5px 5px;
+  vertical-align: middle;
+}
+
+.column {
+  flex: 66.67%;
+  padding-right: 1rem;
+} */

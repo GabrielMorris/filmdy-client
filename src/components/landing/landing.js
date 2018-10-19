@@ -16,7 +16,7 @@ export default function Landing(props) {
         imageSrc="https://i.imgur.com/unKRyIA.jpg"
         minHeight="40vh"
         className="landing-hero"
-        opacity="0"
+        opacity={0}
         style={{
           color: '#ffffff'
         }}
