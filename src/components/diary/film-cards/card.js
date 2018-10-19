@@ -62,7 +62,7 @@ class Card extends React.Component {
             <CardActors actors={this.props.film.actors} />
 
             {/* Critics */}
-            <CardCritics criticalRatings={this.props.film.ratings} />
+            {/* <CardCritics criticalRatings={this.props.film.ratings} /> */}
           </div>
         </div>
 

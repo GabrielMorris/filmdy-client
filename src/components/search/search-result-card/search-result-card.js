@@ -39,19 +39,19 @@ class SearchResultCard extends React.Component {
     }
 
     return (
-      <div className="film-card">
+      <div className="search-film-card">
         {/* Modal */}
         <FilmModal />
 
         {/* Row */}
         <div className="row">
           {/* Poster */}
-          <div className="image-column">
+          <div className="search-image-column">
             <SearchResultCardPoster poster={this.props.film.Poster} />
           </div>
 
           {/* Header */}
-          <div className="column">
+          <div className="search-column">
             <SearchResultCardBody
               film={this.props.film}
               watched={watched}

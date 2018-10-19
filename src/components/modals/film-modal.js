@@ -9,6 +9,7 @@ import { toggleModal } from '../../actions/modal-actions';
 import ReactModal from 'react-modal';
 
 // Styles
+import './film-modal.css';
 
 class FilmModal extends React.Component {
   constructor() {
@@ -24,7 +25,12 @@ class FilmModal extends React.Component {
 
   render() {
     return (
-      <ReactModal isOpen={this.props.showModal} contentLabel="Film information">
+      <ReactModal
+        isOpen={this.props.showModal}
+        contentLabel="Film information"
+        className="Modal"
+        overlayClassName="Overlay"
+      >
         <button onClick={this.handleCloseModal}>Close Modal</button>
 
         <div className="film-modal-information">

@@ -61,10 +61,6 @@ export const addFilmToDiary = (imdbID, userID, token) => dispatch => {
     })
     .then(response => {
       console.log(response);
-      // Make actors into an array without quotes
-      const actors = response.Actors.replace(/"/g, '', -1)
-        .replace(/,/g, '', -1)
-        .split(' ');
 
       const newFilmObject = {
         userID,
@@ -72,7 +68,7 @@ export const addFilmToDiary = (imdbID, userID, token) => dispatch => {
           imdbID,
           title: response.Title,
           plot: response.Plot,
-          actors: actors,
+          actors: response.Actors,
           poster: response.Poster,
           ratings: response.Ratings,
           // TODO: make this dynamic somehow

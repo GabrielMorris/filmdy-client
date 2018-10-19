@@ -2,6 +2,13 @@
   margin: 0;
   text-align: left;
 }
+
 .hero-path p {
   margin: 0;
+}
+
+.diary-grid {
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
 }

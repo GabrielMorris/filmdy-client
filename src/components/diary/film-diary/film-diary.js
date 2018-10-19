@@ -51,7 +51,7 @@ export class FilmDiary extends React.Component {
 
         <FilmDiarySearch userID={this.props.userID} token={this.props.token} />
 
-        <Grid width={384} gap={16}>
+        <Grid width={384} gap={16} className="diary-grid">
           {this.generateFilmCards()}
         </Grid>
       </div>

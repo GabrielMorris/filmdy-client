@@ -12,10 +12,35 @@
 
 .image-column {
   flex: 33.33%;
-  padding: 5px;
+  /* padding: 5px; */
+  padding: 0 5px 5px 5px;
   vertical-align: middle;
 }
 
 .column {
   flex: 66.67%;
+  padding-right: 1rem;
+}
+
+/* TODO: finish */
+@media only screen and (max-width: 480px) {
+  .film-card {
+    width: 100%;
+    margin: 0;
+  }
+  .row {
+    display: block;
+  }
+
+  .image-column {
+    text-align: center;
+    /* flex: 10%; */
+    padding: 5px;
+    /* vertical-align: middle; */
+  }
+
+  .column {
+    /* flex: 90%; */
+    /* padding-right: 1rem; */
+  }
 }

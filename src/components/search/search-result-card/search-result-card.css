@@ -1,4 +1,4 @@
-.film-card {
+.search-film-card {
   /* Border */
   border: 1px solid black;
 
@@ -13,13 +13,13 @@
   display: flex;
 }
 
-.image-column {
+.search-image-column {
   flex: 10%;
-  padding: 5px;
+  padding: 5px 0 5px 5px;
   vertical-align: middle;
 }
 
-.column {
+.search-column {
   flex: 90%;
   padding-right: 1rem;
 }

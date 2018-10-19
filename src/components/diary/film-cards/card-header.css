@@ -24,3 +24,6 @@ h1 {
   margin-bottom: 1rem;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 480px) {
+}
