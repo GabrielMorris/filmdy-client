@@ -12,11 +12,11 @@ You can find Filmdy hosted [here]() on Heroku.
 
 ### Landing page
 
-![Landing page](https://i.imgur.com/l8zSHgy.jpg)
+![Landing page](https://i.imgur.com/3LXrko6.jpg)
 
 ### Login page
 
-![Login page](https://i.imgur.com/g6L48Q8.png)
+![Login page](https://i.imgur.com/MVW6pTz.png)
 
 ### Film diary
 
@@ -24,39 +24,39 @@ You can find Filmdy hosted [here]() on Heroku.
 
 ### Search
 
-![Search](https://i.imgur.com/KzwkR3A.jpg)
+![Search](https://i.imgur.com/pom5ygO.jpg)
 
 ### Film modal
 
-![Film modal](https://i.imgur.com/up3QfTF.jpg)
+![Film modal](https://i.imgur.com/QrW8qiG.png)
 
 ## Tech stack
 
 Filmdy makes use of the latest and greatest technologies in front and backend development, including:
 
 - React for building the frontend
-  -- React Burger Menu
-  -- React CSS Grid
-  -- React DOM
-  -- React Lazy Hero
-  -- React Modal
-  -- React Router
-  -- React Spinners
+  - React Burger Menu
+  - React CSS Grid
+  - React DOM
+  - React Lazy Hero
+  - React Modal
+  - React Router
+  - React Spinners
 - Redux for state management
-  -- Redux Burger Menu
-  -- Redux Form
-  -- Redux Thunk
-  -- JWT Decode
+  - Redux Burger Menu
+  - Redux Form
+  - Redux Thunk
+  - JWT Decode
 - Node.js for the backend
 - Express.js for backend web framework
-  -- Bcrypt.js for encryption
-  -- Passport.js and JWTs for authentication
-  -- Morgan for logging
+  - Bcrypt.js for encryption
+  - Passport.js and JWTs for authentication
+  - Morgan for logging
 - MongoDB
-  -- Mongoose
+  - Mongoose
 - Testing
-  -- Enzyme for React tests
-  -- Mocha, Chai, Chai-HTTP, and NYC for backend testing
+  - Enzyme for React tests
+  - Mocha, Chai, Chai-HTTP, and NYC for backend testing
 
 ## Folder structure
 
