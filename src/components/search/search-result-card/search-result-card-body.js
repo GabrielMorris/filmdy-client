@@ -1,7 +1,6 @@
 // React
 import React from 'react';
 import { connect } from 'react-redux';
-import { API_KEY } from '../../../config';
 
 // Actions
 import {

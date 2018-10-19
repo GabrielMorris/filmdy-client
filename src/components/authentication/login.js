@@ -1,6 +1,6 @@
 // React
 import React from 'react';
-import { reduxForm, Field, SubmissionError, focus } from 'redux-form';
+import { reduxForm, Field, focus } from 'redux-form';
 
 import { login } from '../../actions/auth';
 import Input from './Input';

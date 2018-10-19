@@ -9,13 +9,7 @@ import { loadAuthToken, clearAuthToken } from '../local-storage';
 import { action as toggleMenu } from 'redux-burger-menu';
 
 // React router
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-  Link
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 
 // Components
 import Header from './header/header';

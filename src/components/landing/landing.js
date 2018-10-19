@@ -41,7 +41,12 @@ export default function Landing(props) {
         <div className="landing-card">
           {/* Header */}
           <div className="landing-card-header">
-            <h1>🔍 Search</h1>
+            <h1>
+              <span role="img" aria-label="Magnifying glass emoji">
+                🔍
+              </span>{' '}
+              Search
+            </h1>
             <hr />
           </div>
 
@@ -58,7 +63,12 @@ export default function Landing(props) {
         <div className="landing-card">
           {/* Header */}
           <div className="landing-card-header">
-            <h1>🍿 Watch</h1>
+            <h1>
+              <span role="img" aria-label="Popcorn emoji">
+                🍿
+              </span>{' '}
+              Watch
+            </h1>
             <hr />
           </div>
 
@@ -74,7 +84,12 @@ export default function Landing(props) {
         <div className="landing-card">
           {/* Header */}
           <div className="landing-card-header">
-            <h1>👍 Rate</h1>
+            <h1>
+              <span role="img" aria-label="Thumbs up emoji">
+                👍
+              </span>{' '}
+              Rate
+            </h1>
             <hr />
           </div>
 

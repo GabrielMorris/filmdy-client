@@ -57,7 +57,10 @@ class SearchResultCard extends React.Component {
 
           {/* Poster */}
           <div className="search-image-column">
-            <SearchResultCardPoster poster={this.props.film.Poster} />
+            <SearchResultCardPoster
+              poster={this.props.film.Poster}
+              title={this.props.film.Title}
+            />
           </div>
         </div>
       </div>

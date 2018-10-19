@@ -8,7 +8,6 @@ import CardHeader from './card-header';
 import CardPoster from './card-poster';
 import CardDescription from './card-description';
 import CardActors from './card-actors';
-import CardCritics from './card-critics';
 import CardButtons from './card-buttons';
 
 // Actions
@@ -50,7 +49,10 @@ class Card extends React.Component {
           {/* Column */}
           <div className="image-column">
             {/* Poster */}
-            <CardPoster poster={this.props.film.poster} />
+            <CardPoster
+              poster={this.props.film.poster}
+              title={this.props.film.title}
+            />
           </div>
 
           {/* Column */}
@@ -60,9 +62,6 @@ class Card extends React.Component {
 
             {/* Actors */}
             <CardActors actors={this.props.film.actors} />
-
-            {/* Critics */}
-            {/* <CardCritics criticalRatings={this.props.film.ratings} /> */}
           </div>
         </div>
 

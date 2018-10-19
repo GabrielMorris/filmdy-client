@@ -32,13 +32,13 @@ export class SearchForm extends React.Component {
           color="#546e7a"
           className="diary-hero"
           minHeight="7vh"
-          opacity="1"
+          opacity={1}
           style={{
             color: '#ffffff'
           }}
         >
           <div className="hero-path">
-            <h1 style={{ 'font-size': '32px' }}>Search films</h1>
+            <h1 style={{ fontSize: '32px' }}>Search films</h1>
           </div>
         </LazyHero>
 
