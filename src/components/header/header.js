@@ -10,7 +10,7 @@ import './header.css';
 
 export function Navbar(props) {
   return (
-    <header>
+    <header role="banner">
       <Link to="/">
         <h1>Filmdy</h1>
       </Link>

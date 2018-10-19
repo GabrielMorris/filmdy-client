@@ -14,8 +14,8 @@ export default function CardHeader(props) {
   }
   return (
     <div className="card-header" onClick={props.onClick}>
-      <h3>
-        {props.title} <span>{rating}</span>
+      <h3 aria-label="Film title">
+        {props.title} <span aria-label="Film rating">{rating}</span>
       </h3>
     </div>
   );

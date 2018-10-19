@@ -45,6 +45,7 @@ export class SearchForm extends React.Component {
         <form
           className="search-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+          role="search"
         >
           <label htmlFor="searchInput">Search: </label>
           <Field

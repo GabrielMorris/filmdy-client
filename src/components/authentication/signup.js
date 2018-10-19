@@ -68,32 +68,35 @@ class Signup extends React.Component {
         onChange={event => this.handleInputChange(event)}
         onSubmit={event => this.onSubmit(event)}
       >
-        <h1>Signup</h1>
-        {successMessage}
-        <span style={{ color: 'darkred' }}>
-          {errorMessage}
-          {this.state.signupError}
-        </span>
+        <fieldset>
+          <legend>Signup form</legend>
+          <h1>Signup</h1>
+          {successMessage}
+          <span style={{ color: 'darkred' }}>
+            {errorMessage}
+            {this.state.signupError}
+          </span>
 
-        <Field
-          name="signupUsername"
-          type="text"
-          placeholder="Username"
-          label="Username"
-          component={Input}
-          validate={[required, nonEmpty, usernameLength]}
-        />
+          <Field
+            name="signupUsername"
+            type="text"
+            placeholder="Username"
+            label="Username"
+            component={Input}
+            validate={[required, nonEmpty, usernameLength]}
+          />
 
-        <Field
-          name="signupPassword"
-          type="password"
-          placeholder="Password"
-          label="Password"
-          component={Input}
-          validate={[required, nonEmpty, passwordLength]}
-        />
+          <Field
+            name="signupPassword"
+            type="password"
+            placeholder="Password"
+            label="Password"
+            component={Input}
+            validate={[required, nonEmpty, passwordLength]}
+          />
 
-        <button type="submit">Submit</button>
+          <button type="submit">Submit</button>
+        </fieldset>
       </form>
     );
   }

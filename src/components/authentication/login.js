@@ -71,7 +71,8 @@ export class Login extends React.Component {
           this.onSubmit(userObject);
         }}
       >
-        <div>
+        <fieldset>
+          <legend>Login form</legend>
           <h1>Login</h1>
           {successMessage}
           <span style={{ color: 'darkred' }}>
@@ -98,7 +99,7 @@ export class Login extends React.Component {
           />
 
           <button type="submit">Submit</button>
-        </div>
+        </fieldset>
       </form>
     );
   }

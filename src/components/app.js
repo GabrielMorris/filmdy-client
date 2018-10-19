@@ -106,29 +106,31 @@ class App extends React.Component {
       );
     }
     return (
-      <Menu>
-        <Link
-          to="/"
-          className="menu-item"
-          onClick={() => this.dispatchMenuToggle()}
-        >
-          Home
-        </Link>
-        <Link
-          to="/login"
-          className="menu-item"
-          onClick={() => this.dispatchMenuToggle()}
-        >
-          Login
-        </Link>
-        <Link
-          to="/signup"
-          className="menu-item"
-          onClick={() => this.dispatchMenuToggle()}
-        >
-          Signup
-        </Link>
-      </Menu>
+      <nav role="navigation">
+        <Menu>
+          <Link
+            to="/"
+            className="menu-item"
+            onClick={() => this.dispatchMenuToggle()}
+          >
+            Home
+          </Link>
+          <Link
+            to="/login"
+            className="menu-item"
+            onClick={() => this.dispatchMenuToggle()}
+          >
+            Login
+          </Link>
+          <Link
+            to="/signup"
+            className="menu-item"
+            onClick={() => this.dispatchMenuToggle()}
+          >
+            Signup
+          </Link>
+        </Menu>
+      </nav>
     );
   }
 
@@ -143,7 +145,7 @@ class App extends React.Component {
           <Header />
 
           {/* Main */}
-          <main id="page-wrap">
+          <main id="page-wrap" role="main">
             <Switch>
               {/* Diary route */}
               <Route
