@@ -16,17 +16,17 @@ import './search-result-card-body.css';
 
 class SearchResultCardBody extends React.Component {
   addFilmToDiary() {
-    const { imdbID, token, userID } = this.extractDiaryActionKeys();
+    const { imdbID, token } = this.extractDiaryActionKeys();
 
-    this.props.dispatch(addFilmToDiary(imdbID, userID, token));
+    this.props.dispatch(addFilmToDiary(imdbID, token));
   }
 
   removeFilmFromDiary() {
     console.log('removing from diary');
-    const { imdbID, token, userID } = this.extractDiaryActionKeys();
+    const { imdbID, token } = this.extractDiaryActionKeys();
 
-    this.props.dispatch(removeFilmFromDiary(imdbID, userID, token));
-    this.props.dispatch(fetchDiaryFilms(token, userID));
+    this.props.dispatch(removeFilmFromDiary(imdbID, token));
+    this.props.dispatch(fetchDiaryFilms(token));
   }
 
   extractDiaryActionKeys() {

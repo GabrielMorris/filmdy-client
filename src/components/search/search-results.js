@@ -13,7 +13,7 @@ import { fetchDiaryFilms } from '../../actions/diary-actions';
 
 export class SearchResults extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchDiaryFilms(this.props.token, this.props.userID));
+    this.props.dispatch(fetchDiaryFilms(this.props.token));
   }
 
   generateFilmResults() {

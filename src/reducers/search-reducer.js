@@ -21,7 +21,8 @@ export function searchReducer(state = initialState, action) {
       console.log('search request in reducer');
 
       return Object.assign({}, state, {
-        loading: true
+        loading: true,
+        searchError: null
       });
     }
 
@@ -41,7 +42,8 @@ export function searchReducer(state = initialState, action) {
       console.log('error in search reducer');
 
       return Object.assign({}, state, {
-        searchError: action.error
+        searchError: action.error,
+        loading: null
       });
     }
 

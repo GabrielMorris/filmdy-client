@@ -1,6 +1,7 @@
 // React
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 // Components
 import Card from '../film-cards/card';
@@ -17,7 +18,7 @@ import './film-diary.css';
 
 export class FilmDiary extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchDiaryFilms(this.props.token, this.props.userID));
+    this.props.dispatch(fetchDiaryFilms(this.props.token));
     this.props.dispatch(clearSearchResults());
   }
 
@@ -30,6 +31,17 @@ export class FilmDiary extends React.Component {
         <Card key={film.diaryID} film={film} history={this.props.history} />
       );
     });
+  }
+
+  generateEmptyDiaryMessage() {
+    if (this.props.diaryFilms.length === 0) {
+      return (
+        <div className="empty-diary-message">
+          Get started by{' '}
+          <Link to="/search">searching for some films to add!</Link>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -54,6 +66,7 @@ export class FilmDiary extends React.Component {
         <ul>
           <Grid width={384} gap={16} className="diary-grid">
             {this.generateFilmCards()}
+            {this.generateEmptyDiaryMessage()}
           </Grid>
         </ul>
       </div>

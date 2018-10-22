@@ -13,9 +13,7 @@ export class DiarySearchForm extends React.Component {
     const searchTerm = values.searchInput;
     console.log('SEARCH TERM: ', searchTerm);
 
-    this.props.dispatch(
-      fetchDiaryFilms(this.props.token, this.props.userID, searchTerm)
-    );
+    this.props.dispatch(fetchDiaryFilms(this.props.token, searchTerm));
   }
 
   render() {
@@ -43,11 +41,7 @@ export class DiarySearchForm extends React.Component {
             }}
             onClick={values => {
               this.props.dispatch(
-                fetchDiaryFilms(
-                  this.props.token,
-                  this.props.userID,
-                  values.searchInput
-                )
+                fetchDiaryFilms(this.props.token, values.searchInput)
               );
               this.props.reset();
             }}

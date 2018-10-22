@@ -17,9 +17,9 @@ import './card-buttons.css';
 class CardButton extends React.Component {
   toggleFilmLikedStatus() {
     console.log('like clicked');
-    const { token, userID, imdbID } = this.extractArgsFromProps();
+    const { token, imdbID } = this.extractArgsFromProps();
 
-    this.props.dispatch(toggleFilmLiked(imdbID, userID, token));
+    this.props.dispatch(toggleFilmLiked(imdbID, token));
   }
 
   generateLikeButtons(props) {
@@ -61,10 +61,10 @@ class CardButton extends React.Component {
           onClick={event => {
             console.log('unwatch button clicked');
 
-            const { token, userID, imdbID } = this.extractArgsFromProps();
+            const { token, imdbID } = this.extractArgsFromProps();
 
-            this.props.dispatch(removeFilmFromDiary(imdbID, userID, token));
-            this.props.dispatch(fetchDiaryFilms(token, userID));
+            this.props.dispatch(removeFilmFromDiary(imdbID, token));
+            this.props.dispatch(fetchDiaryFilms(token));
           }}
         >
           Unwatch

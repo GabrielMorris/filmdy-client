@@ -2,9 +2,9 @@ import { API_KEY } from '../config';
 const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
 
 /* Fetching diary films */
-export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
+export const fetchDiaryFilms = (token, searchTerm = '') => dispatch => {
   dispatch(fetchDiaryFilmsRequest());
-  console.log('userID: ', userID);
+
   let actionSearchTerm;
 
   // Only search if we have more than a single character long search request
@@ -14,7 +14,7 @@ export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
     actionSearchTerm = searchTerm;
   }
 
-  return fetch(`http://localhost:8080/api/films?userID=${userID}`, {
+  return fetch(`http://localhost:8080/api/films`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -61,7 +61,7 @@ export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
 };
 
 /* === Adds film to diary === */
-export const addFilmToDiary = (imdbID, userID, token) => dispatch => {
+export const addFilmToDiary = (imdbID, token) => dispatch => {
   dispatch(addFilmRequest());
 
   fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
@@ -73,7 +73,6 @@ export const addFilmToDiary = (imdbID, userID, token) => dispatch => {
       console.log(response);
 
       const newFilmObject = {
-        userID,
         film: {
           imdbID,
           title: response.Title,
@@ -119,7 +118,7 @@ export const addFilmToDiary = (imdbID, userID, token) => dispatch => {
 };
 
 /* === Removes film from diary === */
-export const removeFilmFromDiary = (imdbID, userID, token) => dispatch => {
+export const removeFilmFromDiary = (imdbID, token) => dispatch => {
   console.log('hello?');
   dispatch(removeFilmRequest());
 
@@ -130,17 +129,16 @@ export const removeFilmFromDiary = (imdbID, userID, token) => dispatch => {
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({
-      userID,
       imdbID
     })
   })
     .then(() => dispatch(removeFilmSuccess()))
-    .then(() => dispatch(fetchDiaryFilms(token, userID)))
+    .then(() => dispatch(fetchDiaryFilms(token)))
     .catch(error => dispatch(removeFilmError(error)));
 };
 
 /* === Toggles a film's liked status === */
-export const toggleFilmLiked = (imdbID, userID, token) => dispatch => {
+export const toggleFilmLiked = (imdbID, token) => dispatch => {
   dispatch(toggleLikedRequest());
 
   return fetch(`http://localhost:8080/api/films`, {
@@ -150,13 +148,12 @@ export const toggleFilmLiked = (imdbID, userID, token) => dispatch => {
       Authorization: `Bearer ${token}`
     },
     body: JSON.stringify({
-      userID,
       imdbID
     })
   })
     .then(response => response.json())
     .then(userFilms => dispatch(toggleLikedSuccess(userFilms.diaryFilms)))
-    .then(() => dispatch(fetchDiaryFilms(token, userID)))
+    .then(() => dispatch(fetchDiaryFilms(token)))
     .catch(error => dispatch(toggleLikedError(error)));
 };
 

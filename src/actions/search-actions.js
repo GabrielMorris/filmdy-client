@@ -37,12 +37,13 @@ export const fetchSearchFilms = searchTerm => dispatch => {
         console.log(error);
         dispatch(searchFilmError(error));
       });
+  } else {
+    dispatch(searchFilmError('Error: No search term provided'));
   }
 };
 
 /* === Clear search results === */
 export const clearSearchResults = () => dispatch => {
-  // dispatch(clearSearchResultsRequest());
   dispatch(clearSearchResultsSuccess());
 };
 
