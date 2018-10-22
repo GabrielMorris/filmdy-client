@@ -5,6 +5,14 @@ const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
 export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
   dispatch(fetchDiaryFilmsRequest());
   console.log('userID: ', userID);
+  let actionSearchTerm;
+
+  // Only search if we have more than a single character long search request
+  if (searchTerm.length === 1) {
+    actionSearchTerm = '';
+  } else {
+    actionSearchTerm = searchTerm;
+  }
 
   return fetch(`http://localhost:8080/api/films?userID=${userID}`, {
     headers: {
@@ -23,15 +31,17 @@ export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
       return films[0].diaryFilms;
     })
     .then(diaryFilms => {
-      if (searchTerm !== '') {
+      if (actionSearchTerm !== '') {
         // Filter and reverse the array so we have descending order
         const filteredDiary = diaryFilms
           .filter(film =>
-            film.title.toLowerCase().includes(searchTerm.toLowerCase())
+            film.title.toLowerCase().includes(actionSearchTerm.toLowerCase())
           )
           .reverse();
 
-        dispatch(fetchDiaryFilmsSuccess(diaryFilms, filteredDiary, searchTerm));
+        dispatch(
+          fetchDiaryFilmsSuccess(diaryFilms, filteredDiary, actionSearchTerm)
+        );
       } else {
         // Reverse the array so we have it in descending order
         const reversedDiaryFilms = diaryFilms.reverse();
@@ -39,7 +49,7 @@ export const fetchDiaryFilms = (token, userID, searchTerm = '') => dispatch => {
           fetchDiaryFilmsSuccess(
             reversedDiaryFilms,
             reversedDiaryFilms,
-            searchTerm
+            actionSearchTerm
           )
         );
       }
@@ -71,7 +81,6 @@ export const addFilmToDiary = (imdbID, userID, token) => dispatch => {
           actors: response.Actors,
           poster: response.Poster,
           ratings: response.Ratings,
-          // TODO: make this dynamic somehow
           userRating: true
         }
       };

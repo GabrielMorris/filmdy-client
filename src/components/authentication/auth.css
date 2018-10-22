@@ -8,6 +8,8 @@
 
   /* Padding */
   padding: 4rem 0;
+
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.31);
 }
 
 .auth-form h1 {

@@ -11,7 +11,7 @@ export class DiarySearchForm extends React.Component {
   onChange(values) {
     console.log(values);
     const searchTerm = values.searchInput;
-    console.log(searchTerm);
+    console.log('SEARCH TERM: ', searchTerm);
 
     this.props.dispatch(
       fetchDiaryFilms(this.props.token, this.props.userID, searchTerm)
