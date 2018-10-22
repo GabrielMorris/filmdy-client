@@ -20,13 +20,13 @@ class Card extends React.Component {
   constructor() {
     super();
 
+    // Bind opening the modal to the card
     this.handleOpenModal = this.handleOpenModal.bind(this);
   }
 
   // Modal functions
   handleOpenModal() {
     const imdbID = this.props.film.imdbID;
-
     this.props.dispatch(toggleModal(true, imdbID));
   }
 

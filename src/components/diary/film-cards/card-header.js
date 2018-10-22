@@ -1,10 +1,11 @@
 // React
 import React from 'react';
-// Components
+
 // Styles
 import './card-header.css';
 
 export default function CardHeader(props) {
+  /* Handle rating generation based on the rating that is being passed down into this component */
   let rating;
 
   if (props.rating === true) {

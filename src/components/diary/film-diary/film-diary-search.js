@@ -1,18 +1,16 @@
 // React
 import React from 'react';
+
+// Redux form
 import { reduxForm, Field } from 'redux-form';
 
 // Actions
 import { fetchDiaryFilms } from '../../../actions/diary-actions';
 
-// Styles
-
 export class DiarySearchForm extends React.Component {
+  // On change capture the search value and then get matching diary films
   onChange(values) {
-    console.log(values);
     const searchTerm = values.searchInput;
-    console.log('SEARCH TERM: ', searchTerm);
-
     this.props.dispatch(fetchDiaryFilms(this.props.token, searchTerm));
   }
 
@@ -21,10 +19,9 @@ export class DiarySearchForm extends React.Component {
       <section>
         <form
           className="search-form"
-          onSubmit={event => {
-            event.preventDefault();
-            console.log('hello');
-          }}
+          // Prevent submission
+          onSubmit={event => event.preventDefault()}
+          // Handle field value changes
           onChange={this.props.handleSubmit(values => this.onChange(values))}
         >
           <label htmlFor="searchInput">Filter: </label>
@@ -35,6 +32,7 @@ export class DiarySearchForm extends React.Component {
             component="input"
           />
 
+          {/* Button that clears out any filter we have in the diary */}
           <button
             style={{
               display: 'inline-block'

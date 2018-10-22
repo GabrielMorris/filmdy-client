@@ -5,8 +5,6 @@ import React from 'react';
 import Search from './search';
 import SearchResults from './search-results';
 
-// Styles
-
 export default function SearchContainer(props) {
   return (
     <div>

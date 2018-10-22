@@ -12,15 +12,15 @@ const initialState = {
 
 export function modalReducer(state = initialState, action) {
   switch (action.type) {
+    // Toggle modal visibility
     case TOGGLE_MODAL_REQUEST: {
-      console.log('hhh');
       return Object.assign({}, state);
     }
 
+    // Successfully toggle the modal
     case TOGGLE_MODAL_SUCCESS: {
       const invertedShowModal = action.bool;
 
-      console.log(action);
       return Object.assign({}, state, {
         showModal: invertedShowModal,
         imdbID: action.imdbID,
@@ -28,9 +28,8 @@ export function modalReducer(state = initialState, action) {
       });
     }
 
+    // Error toggling the modal
     case TOGGLE_MODAL_ERROR: {
-      console.log('err');
-
       return Object.assign({}, state, {
         error: action.error
       });

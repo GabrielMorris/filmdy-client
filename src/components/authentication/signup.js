@@ -1,15 +1,20 @@
 // React
 import React from 'react';
-import { reduxForm, Field, focus } from 'redux-form';
 
-import { login, signup } from '../../actions/auth';
-import Input from './Input';
+// Redux
+import { reduxForm, Field, focus } from 'redux-form';
 import {
   required,
   nonEmpty,
   usernameLength,
   passwordLength
 } from './validators';
+
+// Actions
+import { login, signup } from '../../actions/auth';
+
+// Components
+import Input from './Input';
 
 // Styles
 import './auth.css';
@@ -18,38 +23,45 @@ class Signup extends React.Component {
   constructor(props) {
     super(props);
 
+    // Create state to hold any signup errors we encounter
     this.state = {
       signupError: ''
     };
   }
 
+  // On submit handler
   onSubmit(event) {
     event.preventDefault();
-    console.log('signup submitted');
 
+    // When a user signs up attempt to sign them up
     this.props
       .dispatch(signup(this.state.signupUsername, this.state.signupPassword))
       .then(() =>
+        // If signup doesn't throw an error we'll go ahead and sign the user in as well, which will redirect them
         this.props.dispatch(
           login(this.state.signupUsername, this.state.signupPassword)
         )
       )
       .catch(error => {
+        // Catch any signup errors that get thrown so we can display them to the user
         this.setState({ signupError: error.errors._error });
       });
   }
 
+  // Handle input change function
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
 
+    // Update the state with the values of fields that get changed
     this.setState({
       [name]: value
     });
   }
 
   render() {
+    /* Submit success/error view logic */
     let successMessage;
 
     if (this.props.submitSucceeded) {

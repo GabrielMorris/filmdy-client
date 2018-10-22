@@ -1,3 +1,4 @@
+/* Hero path styles */
 .hero-path h1 {
   margin: 0;
   text-align: left;
@@ -7,12 +8,14 @@
   margin: 0;
 }
 
+/* Diary grid styles */
 .diary-grid {
   width: 98%;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* Empty diary styles */
 .empty-diary-message {
   color: #000;
   font-size: 18px;
@@ -23,6 +26,7 @@
 }
 
 @media only screen and (max-width: 512px) {
+  /* Change the grid to fit better on <320-512px displays */
   .diary-grid {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     width: 100%;

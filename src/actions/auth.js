@@ -1,10 +1,13 @@
+// JWT/Redux
 import jwtDecode from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
 
+// Utils
 import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
 
+// Sync
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
 export const setAuthToken = authToken => ({
   type: SET_AUTH_TOKEN,
@@ -74,7 +77,6 @@ export const login = (username, password) => dispatch => {
         console.log(authToken);
         storeAuthInfo(authToken, dispatch);
       })
-      // TODO: handle incorrect login information
       .catch(err => {
         const { code } = err;
         const message =

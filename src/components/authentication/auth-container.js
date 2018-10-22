@@ -7,16 +7,13 @@ import { Redirect } from 'react-router-dom';
 import Login from './login';
 import Signup from './signup';
 
-// Styles
-
 export function AuthContainer(props) {
-  console.log(props.loggedIn);
+  // If a user is signed in and tries to load an auth page we'll redirect them to the diary
   if (props.loggedIn) {
-    console.log('we here');
     return <Redirect to="/" />;
   }
 
-  console.log(props.match.path);
+  // If they are logged out and on /login we'll give them the login component
   if (props.match.path === '/login') {
     return (
       <div>
@@ -25,6 +22,7 @@ export function AuthContainer(props) {
     );
   }
 
+  // Otherwise we'll give them the signup component
   return (
     <div>
       <Signup />
@@ -35,4 +33,5 @@ export function AuthContainer(props) {
 const mapStateToProps = state => ({
   loggedIn: state.auth.currentUser !== null
 });
+
 export default connect(mapStateToProps)(AuthContainer);

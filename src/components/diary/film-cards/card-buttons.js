@@ -9,19 +9,18 @@ import {
   toggleFilmLiked
 } from '../../../actions/diary-actions';
 
-// Components
-
 // Styles
 import './card-buttons.css';
 
 class CardButton extends React.Component {
+  // Function for toggling a film's liked status
   toggleFilmLikedStatus() {
-    console.log('like clicked');
     const { token, imdbID } = this.extractArgsFromProps();
 
     this.props.dispatch(toggleFilmLiked(imdbID, token));
   }
 
+  // Function for generating like/dislike buttons based on ratings prop
   generateLikeButtons(props) {
     // Like
     if (!props.rating) {
@@ -46,6 +45,7 @@ class CardButton extends React.Component {
     );
   }
 
+  // Lets us destructure props dynamically
   extractArgsFromProps() {
     return {
       token: this.props.token,

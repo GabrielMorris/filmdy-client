@@ -1,14 +1,9 @@
 .Modal {
   position: absolute;
-  /* top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px; */
   outline: none;
   border: 1px solid #ccc;
   background-color: #fff;
   padding: 20px;
-
   top: 50%;
   left: 50%;
   right: auto;
@@ -66,18 +61,3 @@
     display: block;
   }
 }
-
-/* .row {
-  display: flex;
-}
-
-.image-column {
-  flex: 33.33%;
-  padding: 0 5px 5px 5px;
-  vertical-align: middle;
-}
-
-.column {
-  flex: 66.67%;
-  padding-right: 1rem;
-} */

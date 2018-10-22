@@ -1,5 +1,6 @@
+/* Auth form styling */
 .auth-form {
-  border: 1px solid black;
+  /* Width */
   width: 70%;
 
   /* Margin */
@@ -9,6 +10,8 @@
   /* Padding */
   padding: 4rem 0;
 
+  /* Border/shadows */
+  border: 1px solid black;
   box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.31);
 }
 
@@ -20,6 +23,7 @@
   width: 60%;
 }
 
+/* Make our hero buttons stand out */
 .hero-button {
   background-color: rgb(88, 86, 214);
 }
@@ -29,6 +33,7 @@
 }
 
 @media only screen and (max-width: 480px) {
+  /* Make auth forms look decent on lower viewport sizes */
   .auth-form {
     width: 90%;
     padding: 0;

@@ -19,7 +19,6 @@ import AuthContainer from './authentication/auth-container';
 import Landing from './landing/landing';
 import Modal from 'react-modal';
 import NoMatch from './no-match';
-
 import Menu from './header/menu/menu';
 
 // Styles
@@ -28,6 +27,7 @@ import './app.css';
 Modal.setAppElement('#root');
 
 class App extends React.Component {
+  /* === Periodly trigger JWT refreshes === */
   componentDidMount() {
     const authToken = loadAuthToken();
 
@@ -51,6 +51,7 @@ class App extends React.Component {
     this.stopPeriodicRefresh();
   }
 
+  /* === Functions for periodly refreshing the JWT auth token === */
   startPeriodicRefresh() {
     this.refreshInterval = setInterval(
       () => this.props.dispatch(refreshAuthToken()),
@@ -70,7 +71,9 @@ class App extends React.Component {
     this.props.dispatch(toggleMenu());
   }
 
+  // Function for generating hamburger menu code
   generateMenu() {
+    // If we're signed in generate the menu for signed in users
     if (this.props.userSignedIn) {
       return (
         <Menu>
@@ -105,6 +108,7 @@ class App extends React.Component {
         </Menu>
       );
     }
+    // Otherwise render the signed out user menu
     return (
       <nav role="navigation">
         <Menu>
@@ -134,6 +138,7 @@ class App extends React.Component {
     );
   }
 
+  // Logic for building the App.js render logic with routing
   appComponentBuilder(props) {
     return (
       <Router>

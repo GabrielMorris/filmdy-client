@@ -9,26 +9,24 @@ import {
   fetchDiaryFilms
 } from '../../../actions/diary-actions';
 
-// Components
-
 // Styles
 import './search-result-card-body.css';
 
 class SearchResultCardBody extends React.Component {
+  // Handle adding films to a user's diary
   addFilmToDiary() {
     const { imdbID, token } = this.extractDiaryActionKeys();
-
     this.props.dispatch(addFilmToDiary(imdbID, token));
   }
 
+  // Handle removing a film from a user's diary
   removeFilmFromDiary() {
-    console.log('removing from diary');
     const { imdbID, token } = this.extractDiaryActionKeys();
-
     this.props.dispatch(removeFilmFromDiary(imdbID, token));
     this.props.dispatch(fetchDiaryFilms(token));
   }
 
+  // Function extracting keys from props
   extractDiaryActionKeys() {
     return {
       imdbID: this.props.film.imdbID,
@@ -36,8 +34,8 @@ class SearchResultCardBody extends React.Component {
     };
   }
 
+  // Handle watch button clicked
   onClick(event) {
-    console.log('watched button clicked');
     !this.props.watched ? this.addFilmToDiary() : this.removeFilmFromDiary();
   }
 

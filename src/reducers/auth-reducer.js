@@ -15,12 +15,14 @@ const initialState = {
 
 export function authReducer(state = initialState, action) {
   switch (action.type) {
+    // Setting auth token
     case SET_AUTH_TOKEN: {
       return Object.assign({}, state, {
         authToken: action.authToken
       });
     }
 
+    // Clearing auth token and current user
     case CLEAR_AUTH: {
       return Object.assign({}, state, {
         authToken: null,
@@ -28,6 +30,7 @@ export function authReducer(state = initialState, action) {
       });
     }
 
+    // Auth request
     case AUTH_REQUEST: {
       return Object.assign({}, state, {
         loading: true,
@@ -35,6 +38,7 @@ export function authReducer(state = initialState, action) {
       });
     }
 
+    // Auth success
     case AUTH_SUCCESS: {
       return Object.assign({}, state, {
         loading: false,
@@ -42,6 +46,7 @@ export function authReducer(state = initialState, action) {
       });
     }
 
+    // Auth error
     case AUTH_ERROR: {
       console.log('hello');
       return Object.assign({}, state, {
@@ -50,6 +55,7 @@ export function authReducer(state = initialState, action) {
       });
     }
 
+    // Return state
     default:
       return state;
   }

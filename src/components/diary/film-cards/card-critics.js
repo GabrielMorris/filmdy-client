@@ -1,11 +1,8 @@
 // React
 import React from 'react';
 
-// Components
-
-// Styles
-
 export default function CardCritics(props) {
+  // Mapping object that gives us formatted names for rating sources
   const ratingSourceObject = {
     'Internet Movie Database': 'IMDb',
     'Rotten Tomatoes': 'Rotten Tomatoes',

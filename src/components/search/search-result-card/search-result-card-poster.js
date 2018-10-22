@@ -1,10 +1,11 @@
 // React
 import React from 'react';
-// Components
+
 // Styles
 import './search-result-card-poster';
 
 export default function SearchResultCardPoster(props) {
+  // If the API doesn't have a poster return a placeholder image so we don't get the ugly broken image thumb
   if (props.poster === 'N/A') {
     return (
       <img
@@ -14,6 +15,7 @@ export default function SearchResultCardPoster(props) {
       />
     );
   }
+  // Otherwise we can return the film poster
   return (
     <img
       src={props.poster}

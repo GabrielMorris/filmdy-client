@@ -2,11 +2,15 @@
 import React from 'react';
 import { reduxForm, Field, focus } from 'redux-form';
 
-import { login } from '../../actions/auth';
-import Input from './Input';
+// Redux validators
 import { required, nonEmpty } from './validators';
 
+// Actions
+import { login } from '../../actions/auth';
+
 // Components
+import Input from './Input';
+
 // Styles
 import './auth.css';
 
@@ -14,6 +18,7 @@ export class Login extends React.Component {
   constructor(props) {
     super(props);
 
+    // Create state within this component that will manage whether or not we have a login error
     this.state = {
       loginError: ''
     };
@@ -21,30 +26,36 @@ export class Login extends React.Component {
     this.handleInputChange = this.handleInputChange.bind(this);
   }
 
+  // On submit handler
   onSubmit(values) {
     const { username, password } = values;
 
+    // Dispatch the username and password and attempt to log the user in
     this.props
       .dispatch(login(username, password))
       .then(() => {
         setTimeout(() => {}, 1000);
       })
       .catch(error => {
+        // Set an error if login fails
         this.setState({ loginError: error.errors._error });
       });
   }
 
+  // Handle input change
   handleInputChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
 
+    // Set the state of the field that's being updated to match the value that's been updated
     this.setState({
       [name]: value
     });
   }
 
   render() {
+    /* Submit success/error logic */
     let successMessage;
 
     if (this.props.submitSucceeded) {

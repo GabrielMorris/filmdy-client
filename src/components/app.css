@@ -1,3 +1,4 @@
+/* === Fonts === */
 * {
   font-family: 'Lato', sans-serif;
 }
@@ -8,6 +9,7 @@ h3 {
   font-family: 'Montserrat', sans-serif;
 }
 
+/* === Buttons === */
 button {
   background-color: #6d6d6d;
   border: none;
@@ -28,6 +30,7 @@ button:hover {
   /* transition: ease-in-out 0.5s; */
 }
 
+/* === Forms === */
 input {
   width: 40%;
   padding: 12px 20px;
@@ -40,6 +43,21 @@ input {
   font-size: 16px;
 }
 
+label {
+  /* We want to hide labels from users but keep them available for screen readers */
+  display: none;
+}
+
+fieldset {
+  border: none;
+}
+
+legend {
+  /* We want to hide legend from users but keep them available for screen readers */
+  display: none;
+}
+
+/* Error page styles */
 .not-found-error {
   text-align: center;
 }
@@ -50,18 +68,7 @@ input {
   margin-right: auto;
 }
 
-label {
-  display: none;
-}
-
-fieldset {
-  border: none;
-}
-
-legend {
-  display: none;
-}
-
+/* Make inputs blocks on small viewports */
 @media only screen and (max-width: 480px) {
   input {
     display: block;

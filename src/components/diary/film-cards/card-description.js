@@ -1,6 +1,6 @@
 // React
 import React from 'react';
-// Components
+
 // Styles
 import './card-description.css';
 

@@ -4,6 +4,7 @@ import React from 'react';
 // Styles
 
 export default function NoMatch(props) {
+  // Random error messages to display on 404s
   const errorMessageArray = [
     'You sought knowledge but found naught but a faded memory.',
     'There is nothing to be found here.',
