@@ -35,7 +35,7 @@ class Card extends React.Component {
       // Film card
       <li className="film-card">
         {/* Modal */}
-        <FilmModal />
+        {/* <FilmModal /> */}
 
         {/* Header and user rating */}
         <CardHeader
@@ -72,6 +72,7 @@ class Card extends React.Component {
             film={this.props.film}
             history={this.props.history}
             rating={this.props.film.userRating}
+            handleOpenModal={this.handleOpenModal}
           />
         </div>
       </li>

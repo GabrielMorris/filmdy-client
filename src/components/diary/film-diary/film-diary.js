@@ -46,6 +46,12 @@ export class FilmDiary extends React.Component {
     }
   }
 
+  generateDiarySearch() {
+    if (!this.props.diaryFilms.length === 0) {
+      return <FilmDiarySearch token={this.props.token} />;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -63,7 +69,7 @@ export class FilmDiary extends React.Component {
           </div>
         </LazyHero>
 
-        <FilmDiarySearch token={this.props.token} />
+        {this.generateDiarySearch()}
 
         <ul>
           <Grid width={384} gap={16} className="diary-grid">

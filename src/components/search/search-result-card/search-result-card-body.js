@@ -54,7 +54,7 @@ class SearchResultCardBody extends React.Component {
           }`}
           onClick={event => this.onClick(event)}
         >
-          {this.props.watched ? 'Unwatch!' : 'Watched!'}
+          {this.props.watched ? 'Unwatch!' : 'Add to diary'}
         </button>
       </div>
     );

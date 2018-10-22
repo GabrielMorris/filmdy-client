@@ -9,6 +9,9 @@ import {
   toggleFilmLiked
 } from '../../../actions/diary-actions';
 
+// Components
+import FilmModal from '../../modals/film-modal';
+
 // Styles
 import './card-buttons.css';
 
@@ -56,6 +59,9 @@ class CardButton extends React.Component {
   render() {
     return (
       <div className="card-buttons-container">
+        {/* Modal */}
+        <FilmModal />
+
         <button
           onClick={event => {
             console.log('unwatch button clicked');
@@ -68,6 +74,8 @@ class CardButton extends React.Component {
         >
           Unwatch
         </button>
+
+        <button onClick={() => this.props.handleOpenModal()}>Details</button>
 
         {this.generateLikeButtons(this.props)}
       </div>
