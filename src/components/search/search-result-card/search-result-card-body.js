@@ -50,6 +50,11 @@ class SearchResultCardBody extends React.Component {
         </h2>
         <button
           className="watched-button"
+          aria-label={`Search result film watched button status: ${
+            this.props.watched
+              ? 'film seen, click to unwatch'
+              : 'film not seen, click to watch'
+          }`}
           onClick={event => this.onClick(event)}
         >
           {this.props.watched ? 'Unwatch!' : 'Watched!'}

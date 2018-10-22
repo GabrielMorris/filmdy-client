@@ -39,7 +39,7 @@ class SearchResultCard extends React.Component {
     }
 
     return (
-      <div className="search-film-card">
+      <li className="search-film-card">
         {/* Modal */}
         <FilmModal />
 
@@ -63,7 +63,7 @@ class SearchResultCard extends React.Component {
             />
           </div>
         </div>
-      </div>
+      </li>
     );
   }
 }

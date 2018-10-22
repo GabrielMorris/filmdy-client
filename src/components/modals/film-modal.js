@@ -29,8 +29,12 @@ class FilmModal extends React.Component {
       <ReactModal
         isOpen={this.props.showModal}
         contentLabel="Film information"
+        onRequestClose={this.handleCloseModal}
         className="Modal"
         overlayClassName="Overlay"
+        aria={{
+          describedby: 'modal-describe'
+        }}
       >
         <button
           onClick={this.handleCloseModal}
@@ -45,7 +49,7 @@ class FilmModal extends React.Component {
           </div>
 
           <div className="film-modal-details modal-column">
-            <ul>
+            <ul className="modal-describe">
               {/* Title */}
               <li>
                 <strong>Title: </strong>
