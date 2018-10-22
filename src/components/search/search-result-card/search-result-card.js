@@ -68,7 +68,6 @@ class SearchResultCard extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  userID: state.auth.currentUser.id,
   token: state.auth.authToken
 });
 

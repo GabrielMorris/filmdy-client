@@ -61,7 +61,7 @@ export class FilmDiary extends React.Component {
           </div>
         </LazyHero>
 
-        <FilmDiarySearch userID={this.props.userID} token={this.props.token} />
+        <FilmDiarySearch token={this.props.token} />
 
         <ul>
           <Grid width={384} gap={16} className="diary-grid">
@@ -78,8 +78,6 @@ const mapStateToProps = state => ({
   error: state.diary.error,
   diaryFilms: state.diary.diaryFilms,
   filteredDiaryFilms: state.diary.filteredDiaryFilms,
-  // searchFilms: state.diary.searchFilms,
-  userID: state.auth.currentUser.id,
   token: state.auth.authToken
 });
 

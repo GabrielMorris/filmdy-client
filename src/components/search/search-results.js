@@ -58,7 +58,6 @@ const mapStateToProps = state => ({
   searchResults: state.search.searchResults,
   searchError: state.search.searchError,
   diaryFilms: state.diary.diaryFilms,
-  userID: state.auth.currentUser.id,
   token: state.auth.authToken,
   loading: state.search.loading
 });

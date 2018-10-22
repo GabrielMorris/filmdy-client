@@ -32,8 +32,7 @@ class SearchResultCardBody extends React.Component {
   extractDiaryActionKeys() {
     return {
       imdbID: this.props.film.imdbID,
-      token: this.props.token,
-      userID: this.props.userID
+      token: this.props.token
     };
   }
 
@@ -65,7 +64,6 @@ class SearchResultCardBody extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userID: state.auth.currentUser.id,
   token: state.auth.authToken
 });
 

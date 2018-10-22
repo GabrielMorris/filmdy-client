@@ -49,7 +49,6 @@ class CardButton extends React.Component {
   extractArgsFromProps() {
     return {
       token: this.props.token,
-      userID: this.props.userID,
       imdbID: this.props.film.imdbID
     };
   }
@@ -77,7 +76,6 @@ class CardButton extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  userID: state.auth.currentUser.id,
   token: state.auth.authToken,
   showModal: state.modal.showModal,
   modalFilm: state.modal.film
