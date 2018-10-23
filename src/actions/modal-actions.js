@@ -1,5 +1,5 @@
 import { API_KEY } from '../config';
-const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
+const FILM_BY_ID_URI = 'https://www.omdbapi.com/?i=';
 const FULL_PLOT = '&plot=full';
 
 export const toggleModal = (bool, imdbID = '') => dispatch => {

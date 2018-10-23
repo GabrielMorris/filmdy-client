@@ -1,6 +1,6 @@
 /* Fetching diary films */
 import { API_KEY } from '../config';
-const SEARCH_URI = 'http://www.omdbapi.com/?s=';
+const SEARCH_URI = 'https://www.omdbapi.com/?s=';
 const SEARCH_FILM_ONLY_PARAM = '&type=movie';
 
 /* === Fetch search results === */

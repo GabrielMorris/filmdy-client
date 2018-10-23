@@ -29,16 +29,4 @@ describe('<CardPoster />', () => {
 
     expect(wrapper.find('img').prop('alt')).toEqual(`${title} film poster`);
   });
-
-  // TODO: this
-  it('Has title and placeholder props', () => {
-    const wrapper = shallow(
-      <CardPoster
-        placeholder={'https://placeholder.com'}
-        title={'Placeholder'}
-      />
-    );
-
-    console.log(wrapper.props());
-  });
 });
