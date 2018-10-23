@@ -9,6 +9,10 @@ export default function CardCritics(props) {
     Metacritic: 'Metacritic'
   };
 
+  if (!props.criticalRatings) {
+    throw new Error('Missing critical ratings');
+  }
+
   const mappedRatings = props.criticalRatings.map((rating, index) => {
     return (
       <li key={index}>

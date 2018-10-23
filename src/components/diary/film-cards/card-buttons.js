@@ -15,7 +15,7 @@ import FilmModal from '../../modals/film-modal';
 // Styles
 import './card-buttons.css';
 
-class CardButton extends React.Component {
+export class CardButton extends React.Component {
   // Function for toggling a film's liked status
   toggleFilmLikedStatus() {
     const { token, imdbID } = this.extractArgsFromProps();
