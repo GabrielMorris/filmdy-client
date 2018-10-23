@@ -34,9 +34,6 @@ class Card extends React.Component {
     return (
       // Film card
       <li className="film-card">
-        {/* Modal */}
-        {/* <FilmModal /> */}
-
         {/* Header and user rating */}
         <CardHeader
           title={this.props.film.title}

@@ -3,9 +3,10 @@ import jwtDecode from 'jwt-decode';
 import { SubmissionError } from 'redux-form';
 
 // Utils
-import { API_BASE_URL } from '../config';
+// import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 // Sync
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
@@ -104,7 +105,7 @@ export const signup = (username, password) => dispatch => {
     })
   );
 
-  return fetch('http://localhost:8080/api/users', {
+  return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json; charset=utf-8'

@@ -1,4 +1,6 @@
-import { API_KEY } from '../config';
+// import { API_KEY } from '../config';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+const API_KEY = process.env.REACT_APP_API_KEY;
 const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
 
 /* Fetching diary films */
@@ -14,7 +16,7 @@ export const fetchDiaryFilms = (token, searchTerm = '') => dispatch => {
     actionSearchTerm = searchTerm;
   }
 
-  return fetch(`http://localhost:8080/api/films`, {
+  return fetch(`${API_BASE_URL}/films`, {
     headers: {
       Authorization: `Bearer ${token}`
     }
@@ -89,7 +91,7 @@ export const addFilmToDiary = (imdbID, token) => dispatch => {
     .then(film => {
       console.log(film);
 
-      return fetch('http://localhost:8080/api/films', {
+      return fetch(`${API_BASE_URL}/films`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=utf-8',
@@ -122,7 +124,7 @@ export const removeFilmFromDiary = (imdbID, token) => dispatch => {
   console.log('hello?');
   dispatch(removeFilmRequest());
 
-  fetch(`http://localhost:8080/api/films`, {
+  fetch(`${API_BASE_URL}/films`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
@@ -141,7 +143,7 @@ export const removeFilmFromDiary = (imdbID, token) => dispatch => {
 export const toggleFilmLiked = (imdbID, token) => dispatch => {
   dispatch(toggleLikedRequest());
 
-  return fetch(`http://localhost:8080/api/films`, {
+  return fetch(`${API_BASE_URL}/films`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json; charset=utf-8',
