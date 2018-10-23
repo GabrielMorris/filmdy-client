@@ -6,7 +6,7 @@ import { SubmissionError } from 'redux-form';
 // import { API_BASE_URL } from '../config';
 import { normalizeResponseErrors } from './utils';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+import { API_BASE_URL } from '../config';
 
 // Sync
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';

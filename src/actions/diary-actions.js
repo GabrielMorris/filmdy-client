@@ -1,6 +1,5 @@
-// import { API_KEY } from '../config';
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
-const API_KEY = process.env.REACT_APP_API_KEY;
+import { API_KEY } from '../config';
+import { API_BASE_URL } from '../config';
 const FILM_BY_ID_URI = 'http://www.omdbapi.com/?i=';
 
 /* Fetching diary films */

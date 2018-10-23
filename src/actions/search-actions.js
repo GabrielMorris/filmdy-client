@@ -1,7 +1,5 @@
 /* Fetching diary films */
-// const API_KEY = process.env.OMDB_API_KEY;
-
-const API_KEY = process.env.REACT_APP_API_KEY;
+import { API_KEY } from '../config';
 const SEARCH_URI = 'http://www.omdbapi.com/?s=';
 const SEARCH_FILM_ONLY_PARAM = '&type=movie';
 
