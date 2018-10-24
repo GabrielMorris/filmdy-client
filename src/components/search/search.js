@@ -21,7 +21,6 @@ export class SearchForm extends React.Component {
 
   onSubmit(values) {
     const token = localStorage.getItem('authToken');
-    console.log(values);
     this.props.dispatch(fetchSearchFilms(values.searchInput, token));
   }
 

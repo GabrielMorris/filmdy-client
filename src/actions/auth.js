@@ -48,12 +48,6 @@ export const storeAuthInfo = (authToken, dispatch) => {
 
 export const login = (username, password) => dispatch => {
   dispatch(authRequest());
-  console.log(
-    JSON.stringify({
-      username,
-      password
-    })
-  );
   return (
     fetch(`${API_BASE_URL}/login`, {
       method: 'POST',
@@ -68,14 +62,12 @@ export const login = (username, password) => dispatch => {
       // Reject any requests which don't return a 200 status, creating
       // errors which follow a consistent format
       .then(res => {
-        console.log(res);
         return normalizeResponseErrors(res);
       })
       .then(res => {
         return res.json();
       })
       .then(({ authToken }) => {
-        console.log(authToken);
         storeAuthInfo(authToken, dispatch);
       })
       .catch(err => {
@@ -98,12 +90,6 @@ export const login = (username, password) => dispatch => {
 
 export const signup = (username, password) => dispatch => {
   dispatch(authRequest());
-  console.log(
-    JSON.stringify({
-      username,
-      password
-    })
-  );
 
   return fetch(`${API_BASE_URL}/users`, {
     method: 'POST',

@@ -25,13 +25,10 @@ export function diaryReducer(state = initialState, action) {
   switch (action.type) {
     /* === FETCHING === */
     case FETCH_DIARY_FILMS_REQUEST: {
-      console.log('diary request in reducer');
       return Object.assign({}, state);
     }
 
     case FETCH_DIARY_FILMS_SUCCESS: {
-      console.log('fetch diary success in reducer');
-
       return Object.assign({}, state, {
         diaryFilms: action.diaryFilms,
         filteredDiaryFilms: action.filteredDiaryFilms
@@ -39,7 +36,6 @@ export function diaryReducer(state = initialState, action) {
     }
 
     case FETCH_DIARY_FILMS_ERROR: {
-      console.log('fetch diary error in reducer');
       return Object.assign({}, state, {
         error: action.error
       });
@@ -47,13 +43,10 @@ export function diaryReducer(state = initialState, action) {
 
     /* === ADDING === */
     case ADD_FILM_REQUEST: {
-      console.log('add request reducer');
       return Object.assign({}, state);
     }
 
     case ADD_FILM_SUCCESS: {
-      console.log('add success reducer');
-
       return Object.assign({}, state, {
         diaryFilms: action.diaryFilms,
         filteredDiaryFilms: action.diaryFilms
@@ -61,8 +54,6 @@ export function diaryReducer(state = initialState, action) {
     }
 
     case ADD_FILM_ERROR: {
-      console.log('add error reducer');
-
       return Object.assign({}, state, {
         error: action.error
       });
@@ -70,18 +61,14 @@ export function diaryReducer(state = initialState, action) {
 
     /* === REMOVING === */
     case REMOVE_FILM_REQUEST: {
-      console.log('remove request reducer');
       return Object.assign({}, state);
     }
 
     case REMOVE_FILM_SUCCESS: {
-      console.log('remove success reducer');
       return Object.assign({}, state);
     }
 
     case REMOVE_FILM_ERROR: {
-      console.log('remove error reducer');
-
       return Object.assign({}, state, {
         error: action.error
       });
@@ -89,16 +76,12 @@ export function diaryReducer(state = initialState, action) {
 
     /* === LIKING === */
     case TOGGLE_LIKED_REQUEST: {
-      console.log('toggling like request');
-
       return Object.assign({}, state, {
         loading: true
       });
     }
 
     case TOGGLE_LIKED_SUCCESS: {
-      console.log('toggling like success');
-
       return Object.assign({}, state, {
         error: null,
         loading: false
@@ -106,15 +89,12 @@ export function diaryReducer(state = initialState, action) {
     }
 
     case TOGGLE_LIKED_ERROR: {
-      console.log('toggling like error');
-
       return Object.assign({}, state, {
         error: action.error
       });
     }
 
     default:
-      console.log('returning initial state');
       return state;
   }
 }

@@ -16,24 +16,17 @@ export const fetchSearchFilms = searchTerm => dispatch => {
     return fetch(
       `${SEARCH_URI}${plussedSearchTerm}${SEARCH_FILM_ONLY_PARAM}${API_KEY}`
     )
-      .then(response => {
-        console.log(response);
-        return response.json();
-      })
+      .then(response => response.json())
       .then(response => {
         if (response.Error) {
-          console.log('returning promise rejection');
           return Promise.reject(response.Error);
         }
-        console.log(response);
         return response.Search;
       })
       .then(filmsSearchArray => {
         dispatch(searchFilmSuccess(filmsSearchArray));
       })
       .catch(error => {
-        console.log('hitting error');
-        console.log(error);
         dispatch(searchFilmError(error));
       });
   } else {

@@ -8,10 +8,7 @@ export const toggleModal = (bool, imdbID = '') => dispatch => {
   if (imdbID !== '') {
     return fetch(`${FILM_BY_ID_URI}${imdbID}${FULL_PLOT}${API_KEY}`)
       .then(response => response.json())
-      .then(film => {
-        console.log(film);
-        dispatch(toggleModalSuccess(bool, imdbID, film));
-      })
+      .then(film => dispatch(toggleModalSuccess(bool, imdbID, film)))
       .catch(error => toggleModalError(error));
   } else {
     dispatch(toggleModalSuccess(false, '', { Ratings: [] }));

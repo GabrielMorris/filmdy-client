@@ -32,7 +32,6 @@ class App extends React.Component {
     const authToken = loadAuthToken();
 
     if (authToken) {
-      console.log('authtoken in local storage');
       storeAuthInfo(authToken, this.props.dispatch);
     }
   }
@@ -97,7 +96,6 @@ class App extends React.Component {
             to="/"
             className="menu-item"
             onClick={event => {
-              console.log('loguout clicked');
               this.props.dispatch(clearAuth());
               clearAuthToken();
               this.dispatchMenuToggle();

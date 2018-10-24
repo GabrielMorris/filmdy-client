@@ -28,7 +28,6 @@ export const fetchDiaryFilms = (token, searchTerm = '') => dispatch => {
       return response.json();
     })
     .then(films => {
-      console.log(films);
       return films[0].diaryFilms;
     })
     .then(diaryFilms => {
@@ -56,7 +55,6 @@ export const fetchDiaryFilms = (token, searchTerm = '') => dispatch => {
       }
     })
     .catch(error => {
-      console.error(error);
       dispatch(fetchDiaryFilmsError(error));
     });
 };
@@ -67,12 +65,9 @@ export const addFilmToDiary = (imdbID, token) => dispatch => {
 
   fetch(`${FILM_BY_ID_URI}${imdbID}${API_KEY}`)
     .then(response => {
-      console.log(response);
       return response.json();
     })
     .then(response => {
-      console.log(response);
-
       const newFilmObject = {
         film: {
           imdbID,
@@ -88,8 +83,6 @@ export const addFilmToDiary = (imdbID, token) => dispatch => {
       return newFilmObject;
     })
     .then(film => {
-      console.log(film);
-
       return fetch(`${API_BASE_URL}/films`, {
         method: 'POST',
         headers: {
@@ -104,23 +97,18 @@ export const addFilmToDiary = (imdbID, token) => dispatch => {
         .catch(err => console.error(err));
     })
     .then(userFilms => {
-      console.log(userFilms);
-
       // Reverse the array so we have it in descending order
       const reversedDiaryFilms = userFilms.diaryFilms.reverse();
 
       dispatch(addFilmSuccess(reversedDiaryFilms));
     })
     .catch(error => {
-      console.log('hitting error in update watched status');
-      console.error(error);
       dispatch(addFilmError(error));
     });
 };
 
 /* === Removes film from diary === */
 export const removeFilmFromDiary = (imdbID, token) => dispatch => {
-  console.log('hello?');
   dispatch(removeFilmRequest());
 
   fetch(`${API_BASE_URL}/films`, {

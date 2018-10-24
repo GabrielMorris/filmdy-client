@@ -64,8 +64,6 @@ export class CardButton extends React.Component {
 
         <button
           onClick={event => {
-            console.log('unwatch button clicked');
-
             const { token, imdbID } = this.extractArgsFromProps();
 
             this.props.dispatch(removeFilmFromDiary(imdbID, token));
