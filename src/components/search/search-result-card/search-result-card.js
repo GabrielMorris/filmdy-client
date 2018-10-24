@@ -13,7 +13,7 @@ import { toggleModal } from '../../../actions/modal-actions';
 // Styles
 import './search-result-card.css';
 
-class SearchResultCard extends React.Component {
+export class SearchResultCard extends React.Component {
   constructor() {
     super();
 

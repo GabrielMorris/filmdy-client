@@ -12,7 +12,7 @@ import {
 // Styles
 import './search-result-card-body.css';
 
-class SearchResultCardBody extends React.Component {
+export class SearchResultCardBody extends React.Component {
   // Handle adding films to a user's diary
   addFilmToDiary() {
     const { imdbID, token } = this.extractDiaryActionKeys();
