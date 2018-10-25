@@ -8,7 +8,7 @@ import {
 } from '../actions/search-actions';
 
 // Initial state
-const initialState = {
+export const initialState = {
   searchResults: [],
   searchTerm: '',
   searchError: null,

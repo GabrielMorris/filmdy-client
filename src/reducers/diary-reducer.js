@@ -14,7 +14,7 @@ import {
   TOGGLE_LIKED_ERROR
 } from '../actions/diary-actions';
 
-const initialState = {
+export const initialState = {
   error: null,
   diaryFilms: [],
   filteredDiaryFilms: [],

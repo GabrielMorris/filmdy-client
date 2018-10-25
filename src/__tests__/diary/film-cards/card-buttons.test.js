@@ -1,3 +1,4 @@
+import Store from '../../../store/store';
 import React from 'react';
 import { shallow } from 'enzyme';
 
@@ -18,5 +19,24 @@ describe('<CardButtons />', () => {
     const wrapper = shallow(<CardButton rating={true} />);
 
     expect(wrapper.find('.dislike-button').length).toEqual(1);
+  });
+
+  it('Dispatches the toggleFilmLiked action', () => {
+    const dispatch = jest.fn();
+    const imdbID = '123';
+    const token = 'abc';
+    const wrapper = shallow(
+      <CardButton
+        store={Store}
+        dispatch={dispatch}
+        rating={true}
+        token={token}
+        film={{ imdbID }}
+      />
+    );
+    const button = wrapper.find('.dislike-button');
+
+    button.simulate('click');
+    expect(dispatch).toHaveBeenCalled();
   });
 });
