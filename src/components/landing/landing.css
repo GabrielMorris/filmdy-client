@@ -58,16 +58,25 @@ h2 img {
   }
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 480px) {
   .landing-hero {
     padding: 0;
   }
 
   .landing-h1 {
-    font-size: 28px;
+    font-size: 26px;
+  }
+
+  .landing-h3 {
+    font-size: 18px;
   }
 
   .landing-card-grid {
     margin: 0;
+  }
+
+  .hero-button {
+    padding: 7px 10px;
+    font-size: 18px;
   }
 }

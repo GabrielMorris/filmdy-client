@@ -22,7 +22,7 @@ export default function Landing(props) {
         }}
       >
         <h1 className="landing-h1">Powerful film journaling</h1>
-        <h3>
+        <h3 className="landing-h3">
           The best site for finding, tracking, and managing the films you've
           seen and loved.
         </h3>
