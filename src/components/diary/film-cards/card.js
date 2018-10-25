@@ -3,7 +3,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 // Components
-import FilmModal from '../../modals/film-modal';
 import CardHeader from './card-header';
 import CardPoster from './card-poster';
 import CardDescription from './card-description';
