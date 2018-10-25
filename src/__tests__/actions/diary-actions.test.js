@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../config';
 import {
   ADD_FILM_REQUEST,
   ADD_FILM_SUCCESS,
@@ -22,7 +23,9 @@ import {
   TOGGLE_LIKED_ERROR,
   toggleLikedRequest,
   toggleLikedSuccess,
-  toggleLikedError
+  toggleLikedError,
+  fetchDiaryFilms,
+  addFilmToDiary
 } from '../../actions/diary-actions';
 
 describe('Diary request', () => {
@@ -137,6 +140,32 @@ describe('Diary error', () => {
     expect(action).toEqual({
       type: TOGGLE_LIKED_ERROR,
       error
+    });
+  });
+});
+
+describe('Async fetchDiaryFilms', () => {
+  it('should call fetchdiaryfilmssuccess', () => {
+    global.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        ok: true,
+        json() {
+          return [{ diaryFilms: [] }];
+        }
+      })
+    );
+
+    const dispatch = jest.fn();
+
+    return fetchDiaryFilms('hello', 'blade runner')(dispatch).then(() => {
+      expect(fetch).toHaveBeenCalledWith(`${API_BASE_URL}/films`, {
+        headers: {
+          Authorization: `Bearer hello`
+        }
+      });
+      expect(dispatch).toHaveBeenCalledWith(
+        fetchDiaryFilmsSuccess([], [], 'blade runner')
+      );
     });
   });
 });

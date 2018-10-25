@@ -1,5 +1,4 @@
-import { API_KEY } from '../config';
-import { API_BASE_URL } from '../config';
+import { API_KEY, API_BASE_URL } from '../config';
 const FILM_BY_ID_URI = 'https://www.omdbapi.com/?i=';
 
 /* Fetching diary films */
